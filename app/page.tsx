@@ -25,7 +25,7 @@ export default function Home() {
               </p>
             </div>
             <div className="flex justify-center mt-5">
-              <Badge className="bg-emerald-700">Informații validate</Badge>
+              <Badge className="bg-emerald-700">Informații validate <Image src="/ro.svg" alt="ro" width={20} height={20} className="rounded-md ml-2"/></Badge>
             </div>
           </div>
         </div>
