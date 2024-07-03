@@ -51,7 +51,7 @@ export const SearchLake = () => {
           height={20}
           alt="fish"
           className="flip-horizontal"
-        />
+        />  
       </div>
     </div>
   );

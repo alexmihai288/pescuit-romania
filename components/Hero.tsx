@@ -1,7 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import { Badge } from "./ui/badge";
-import { SearchLake } from "./SearchLake";
+import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 export const Hero = () => {
   return (
@@ -13,6 +14,17 @@ export const Hero = () => {
         alt="main"
         className="object-cover max-h-screen brightness-50"
       />
+      <div className="self-center absolute top-10 bg-white right-5 h-10 rounded-md flex justify-end">
+        <div className="flex items-center justify-center gap-2.5 py-2.5 px-5">
+          <Link href="/login">
+            <p className="text-sm font-bold">Intră în cont</p>
+          </Link>
+          <Separator orientation="vertical" className="bg-indigo-500 w-1" />
+          <Link href="/register">
+            <p className="text-sm font-bold">Creează cont</p>
+          </Link>
+        </div>
+      </div>
       <div className="self-center absolute text-white top-1/2 bottom-1/2 w-full flex justify-center">
         <div>
           <h1 className="font-bold text-7xl text-center">Pescuit România</h1>
