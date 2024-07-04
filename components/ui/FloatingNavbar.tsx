@@ -10,6 +10,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { PlusCircle, Search, Trophy } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export const FloatingNav = ({
   navItems,
@@ -22,6 +23,7 @@ export const FloatingNav = ({
   }[];
   className?: string;
 }) => {
+  const pathname = usePathname();
   const { scrollYProgress } = useScroll();
 
   // set true for the initial state so that nav bar is visible in the hero section
@@ -77,20 +79,43 @@ export const FloatingNav = ({
           <Link
             key={`link=${idx}`}
             href={navItem.link}
-            className={cn("relative items-center flex space-x-1","group")}
+            className={cn(
+              "relative items-center flex space-x-1 group",
+              pathname === navItem.link && "underline underline-offset-4"
+            )}
           >
             {idx === 0 && (
-              <PlusCircle className="text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors" />
+              <PlusCircle
+                className={cn(
+                  "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",
+                  pathname === navItem.link && "text-primary"
+                )}
+              />
             )}
-             {idx === 1 && (
-              <Trophy className="text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors" />
+            {idx === 1 && (
+              <Trophy
+                className={cn(
+                  "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",
+                  pathname === navItem.link && "text-primary"
+                )}
+              />
             )}
-              {idx === 2 && (
-              <Search className="text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors" />
+            {idx === 2 && (
+              <Search
+                className={cn(
+                  "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",
+                  pathname === navItem.link && "text-primary"
+                )}
+              />
             )}
             {/* add !cursor-pointer */}
             {/* remove hidden sm:block for the mobile responsive */}
-            <span className=" text-sm !cursor-pointer font-bold text-muted-foreground group-hover:text-primary transition-colors">
+            <span
+              className={cn(
+                "text-sm !cursor-pointer font-bold text-muted-foreground group-hover:text-primary transition-colors",
+                pathname === navItem.link && "text-primary"
+              )}
+            >
               {navItem.name}
             </span>
           </Link>
