@@ -3,6 +3,7 @@ import { Nunito } from "next/font/google";
 import "./globals.css";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/constants";
+import { Toaster } from "@/components/ui/toaster";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -20,6 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={font.className}>
         <FloatingNav navItems={navItems} />
+        <Toaster />
         {children}
       </body>
     </html>

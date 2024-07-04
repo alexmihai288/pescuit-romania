@@ -16,7 +16,7 @@ datasource db {
 model Lake {
   id       String @id @default(uuid())
   lakeName String
-  imageUrl String
+  logoUrl String
   phoneNumber String
   location String
 
