@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import {
   Form,
   FormControl,
@@ -16,7 +16,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import { MapPin } from "lucide-react";
-import { UploadImages } from "./UploadImages";
+import { UploadLogo } from "./UploadLogo";
 import { FaImage } from "react-icons/fa6";
 
 const formSchema = z.object({
@@ -101,11 +101,10 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <UploadImages setValue={form.setValue} />
+          <UploadLogo setValue={form.setValue} />
           <Button type="submit">Submit</Button>
         </form>
       </Form>{" "}
     </div>
   );
 };
-

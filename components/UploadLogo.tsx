@@ -5,11 +5,11 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { cn } from "@/lib/utils";
 import { ImageIcon, Loader2, MousePointerSquareDashed } from "lucide-react";
 import Image from "next/image";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 import { UseFormSetValue } from "react-hook-form";
 
-export const UploadImages = ({
+export const UploadLogo = ({
   setValue,
 }: {
   setValue: UseFormSetValue<{
