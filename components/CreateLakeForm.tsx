@@ -18,6 +18,9 @@ import { MdDriveFileRenameOutline } from "react-icons/md";
 import { MapPin } from "lucide-react";
 import { UploadLogo } from "./UploadLogo";
 import { FaImage } from "react-icons/fa6";
+import { TfiImage } from "react-icons/tfi";
+import { UploadMainImage } from "./UploadMainImage";
+import { UploadGallery } from "./UploadGallery";
 
 const formSchema = z.object({
   nume_balta: z.string().min(2, {
@@ -27,6 +30,10 @@ const formSchema = z.object({
     message: "Locația trebuie să conțină mai mult de 2 caractere",
   }),
   logo: z.string(),
+  imagine_coperta: z.string(),
+  galerie: z.array(z.string()).min(1, {
+    message: "Galeria trebuie să conțină cel puțin un element.",
+  }),
 });
 export const CreateLakeForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -35,6 +42,8 @@ export const CreateLakeForm = () => {
       nume_balta: "",
       adresa: "",
       logo: "",
+      imagine_coperta: "",
+      galerie: [],
     },
   });
 
@@ -102,6 +111,40 @@ export const CreateLakeForm = () => {
             )}
           />
           <UploadLogo setValue={form.setValue} />
+          <FormField
+            control={form.control}
+            name="imagine_coperta"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <TfiImage className="w-[14px] h-[14px]" />
+                  Imagine de copertă
+                </FormLabel>
+                <FormControl>
+                  <Input className="hidden" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <UploadMainImage setValue={form.setValue} />
+          <FormField
+            control={form.control}
+            name="imagine_coperta"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <TfiImage className="w-[14px] h-[14px]" />
+                  Galerie
+                </FormLabel>
+                <FormControl>
+                  <Input className="hidden" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <UploadGallery setValue={form.setValue} />
           <Button type="submit">Submit</Button>
         </form>
       </Form>{" "}

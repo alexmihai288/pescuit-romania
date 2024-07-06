@@ -9,15 +9,15 @@ import React, { useState } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
 import { UseFormSetValue } from "react-hook-form";
 
-export const UploadLogo = ({
+export const UploadMainImage = ({
   setValue,
 }: {
   setValue: UseFormSetValue<{
     nume_balta: string;
     adresa: string;
     logo: string;
-    imagine_coperta: string;
-    galerie: string[];
+    imagine_coperta:string
+    galerie:string[]
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -29,7 +29,7 @@ export const UploadLogo = ({
   const { startUpload, isUploading } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
       setImageUrl(data.url);
-      setValue("logo", data.url);
+      setValue("imagine_coperta", data.url);
       toast({
         title: `You uploaded succesfully`,
         variant: "default",
