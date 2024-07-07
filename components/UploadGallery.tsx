@@ -7,12 +7,20 @@ import { ImageIcon, Loader2, MousePointerSquareDashed } from "lucide-react";
 import Image from "next/image";
 import React, { useState } from "react";
 import Dropzone, { FileRejection } from "react-dropzone";
-import { UseFormSetValue } from "react-hook-form";
+import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 
 export const UploadGallery = ({
   setValue,
+  getValues,
 }: {
   setValue: UseFormSetValue<{
+    nume_balta: string;
+    adresa: string;
+    logo: string;
+    imagine_coperta: string;
+    galerie: string[];
+  }>;
+  getValues: UseFormGetValues<{
     nume_balta: string;
     adresa: string;
     logo: string;
@@ -29,7 +37,9 @@ export const UploadGallery = ({
   const { startUpload, isUploading } = useUploadThing("imageUploader", {
     onClientUploadComplete: ([data]) => {
       setImageUrls((prevData) => [...prevData, data.url]);
-      setValue("galerie", imageUrls);
+      const currentGalerie = getValues("galerie");
+      const updatedGalerie = [...currentGalerie, data.url];
+      setValue("galerie", updatedGalerie);
       toast({
         title: `You uploaded succesfully`,
         variant: "default",

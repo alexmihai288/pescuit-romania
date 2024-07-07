@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Form,
   FormControl,
@@ -46,7 +46,7 @@ export const CreateLakeForm = () => {
       galerie: [],
     },
   });
-
+  
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
@@ -144,7 +144,7 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <UploadGallery setValue={form.setValue} />
+          <UploadGallery setValue={form.setValue} getValues={form.getValues}/>
           <Button type="submit">Submit</Button>
         </form>
       </Form>{" "}
