@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Form,
   FormControl,
@@ -21,6 +21,8 @@ import { FaImage } from "react-icons/fa6";
 import { TfiImage } from "react-icons/tfi";
 import { UploadMainImage } from "./UploadMainImage";
 import { UploadGallery } from "./UploadGallery";
+import { BsFillTelephoneFill } from "react-icons/bs";
+import { CiMail } from "react-icons/ci";
 
 const formSchema = z.object({
   nume_balta: z.string().min(2, {
@@ -34,6 +36,8 @@ const formSchema = z.object({
   galerie: z.array(z.string()).min(1, {
     message: "Galeria trebuie să conțină cel puțin un element.",
   }),
+  telefon: z.string(),
+  adresa_mail: z.string(),
 });
 export const CreateLakeForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -44,9 +48,11 @@ export const CreateLakeForm = () => {
       logo: "",
       imagine_coperta: "",
       galerie: [],
+      telefon: "",
+      adresa_mail: "",
     },
   });
-  
+
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
   }
@@ -144,7 +150,42 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <UploadGallery setValue={form.setValue} getValues={form.getValues}/>
+          <UploadGallery setValue={form.setValue} getValues={form.getValues} />
+          <FormField
+            control={form.control}
+            name="telefon"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <BsFillTelephoneFill /> Telefon
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    placeholder="Numele de telefon al bății sau al administratorului"
+                    {...field}
+                  />
+                </FormControl>
+                <FormDescription></FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="adresa_mail"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <CiMail /> Adresă de email
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Adresă email de contact" {...field} />
+                </FormControl>
+                <FormDescription></FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
           <Button type="submit">Submit</Button>
         </form>
       </Form>{" "}

@@ -19,6 +19,8 @@ export const UploadGallery = ({
     logo: string;
     imagine_coperta: string;
     galerie: string[];
+    telefon: string;
+    adresa_mail: string;
   }>;
   getValues: UseFormGetValues<{
     nume_balta: string;
@@ -26,6 +28,8 @@ export const UploadGallery = ({
     logo: string;
     imagine_coperta: string;
     galerie: string[];
+    telefon: string;
+    adresa_mail: string;
   }>;
 }) => {
   const [imageUrls, setImageUrls] = useState<string[]>([]);

@@ -18,6 +18,8 @@ export const UploadLogo = ({
     logo: string;
     imagine_coperta: string;
     galerie: string[];
+    telefon: string;
+    adresa_mail: string;
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");

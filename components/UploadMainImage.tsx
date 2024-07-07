@@ -16,8 +16,10 @@ export const UploadMainImage = ({
     nume_balta: string;
     adresa: string;
     logo: string;
-    imagine_coperta:string
-    galerie:string[]
+    imagine_coperta: string;
+    galerie: string[];
+    telefon: string;
+    adresa_mail: string;
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");
