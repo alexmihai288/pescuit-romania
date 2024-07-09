@@ -7,10 +7,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { db } from "@/lib/db";
 import React from "react";
 
-const AdaugaBaltaPage = () => {
-  return (
+const AdaugaBaltaPage = async() => {
+
+  const lakes = await db.lake.findMany()
+
+  console.log(lakes)
+    return (
     <div className="mt-32 container">
       <Breadcrumb>
         <BreadcrumbList>

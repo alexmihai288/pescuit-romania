@@ -4,6 +4,7 @@ import "./globals.css";
 import { FloatingNav } from "@/components/ui/FloatingNavbar";
 import { navItems } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
+import { QueryProvider } from "@/components/providers/QueryProvider";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -20,9 +21,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <FloatingNav navItems={navItems} />
-        <Toaster />
-        {children}
+        <QueryProvider>
+          <FloatingNav navItems={navItems} />
+          <Toaster />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

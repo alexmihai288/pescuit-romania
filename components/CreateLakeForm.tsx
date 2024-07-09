@@ -15,7 +15,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { MdDriveFileRenameOutline } from "react-icons/md";
-import { MapPin } from "lucide-react";
+import { Loader2, MapPin } from "lucide-react";
 import { UploadLogo } from "./UploadLogo";
 import { FaImage } from "react-icons/fa6";
 import { TfiImage } from "react-icons/tfi";
@@ -23,8 +23,10 @@ import { UploadMainImage } from "./UploadMainImage";
 import { UploadGallery } from "./UploadGallery";
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
 
-const formSchema = z.object({
+export const LakeformSchema = z.object({
   nume_balta: z.string().min(2, {
     message: "Numele bălții trebuie să conțină cel putin 2 caractere.",
   }),
@@ -40,8 +42,15 @@ const formSchema = z.object({
   adresa_mail: z.string(),
 });
 export const CreateLakeForm = () => {
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
+  const { mutate: createLake, isPending } = useMutation({
+    mutationFn: async (lakeInfo: z.infer<typeof LakeformSchema>) => {
+      const { data } = await axios.post("/api/lake", lakeInfo);
+      return data;
+    },
+  });
+
+  const form = useForm<z.infer<typeof LakeformSchema>>({
+    resolver: zodResolver(LakeformSchema),
     defaultValues: {
       nume_balta: "",
       adresa: "",
@@ -53,8 +62,8 @@ export const CreateLakeForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
+  function onSubmit(values: z.infer<typeof LakeformSchema>) {
+    createLake(values);
   }
 
   return (
@@ -186,7 +195,10 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+
+          <Button type="submit">
+            {isPending && <Loader2 className="mr-2 animate-spin" />} Submit
+          </Button>
         </form>
       </Form>{" "}
     </div>
