@@ -1,4 +1,4 @@
-import { LakeformSchema } from "@/components/CreateLakeForm";
+import { LakeformSchema } from "@/app/adauga-balta/_components/CreateLakeForm";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 

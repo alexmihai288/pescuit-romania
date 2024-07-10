@@ -1,4 +1,4 @@
-import { CreateLakeForm } from "@/components/CreateLakeForm";
+import { CreateLakeForm } from "@/app/adauga-balta/_components/CreateLakeForm";
 import {
   Breadcrumb,
   BreadcrumbItem,

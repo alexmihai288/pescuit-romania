@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
-import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { UseFormSetValue } from "react-hook-form";
 
 interface LakeDescriptionProps {

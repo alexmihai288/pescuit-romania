@@ -1,8 +1,12 @@
 import { Hero } from "@/components/Hero";
 import { Lakes } from "@/components/Lakes";
 import { SearchLake } from "@/components/SearchLake";
+import { db } from "@/lib/db";
 
-export default function Home() {
+export default async function Home() {
+
+  const lakes = await db.lake.findMany()
+
   return (
     <main>
       <div className="relative">
@@ -14,7 +18,7 @@ export default function Home() {
       <div className="my-32 container">
         <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
         <div className="mt-10">
-          <Lakes />
+          <Lakes initialLakes={lakes}/>
         </div>
       </div>
 

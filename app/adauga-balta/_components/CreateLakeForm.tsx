@@ -8,9 +8,9 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "./ui/form";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+} from "../../../components/ui/form";
+import { Input } from "../../../components/ui/input";
+import { Button } from "../../../components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -29,6 +29,7 @@ import { RiContactsLine } from "react-icons/ri";
 
 import { MdDescription } from "react-icons/md";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
 const LakeDescription = dynamic(() => import("./LakeDescription"), {
   ssr: false,
 });
@@ -61,16 +62,14 @@ export const LakeformSchema = z.object({
   }),
 });
 export const CreateLakeForm = () => {
-  const [description, setDescription] = useState("");
-
-  useEffect(() => {
-    console.log(description);
-  }, [description]);
-
+  const router = useRouter();
   const { mutate: createLake, isPending } = useMutation({
     mutationFn: async (lakeInfo: z.infer<typeof LakeformSchema>) => {
       const { data } = await axios.post("/api/lake", lakeInfo);
       return data;
+    },
+    onSuccess: () => {
+      router.push("/");
     },
   });
 
