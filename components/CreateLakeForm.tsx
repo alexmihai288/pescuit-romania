@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Form,
   FormControl,
@@ -27,6 +27,12 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { RiContactsLine } from "react-icons/ri";
 
+import { MdDescription } from "react-icons/md";
+import dynamic from "next/dynamic";
+const LakeDescription = dynamic(() => import("./LakeDescription"), {
+  ssr: false,
+});
+
 export const LakeformSchema = z.object({
   nume_balta: z.string().min(2, {
     message: "Numele bălții trebuie să conțină cel putin 2 caractere.",
@@ -34,16 +40,33 @@ export const LakeformSchema = z.object({
   adresa: z.string().min(3, {
     message: "Locația trebuie să conțină mai mult de 2 caractere",
   }),
-  logo: z.string(),
-  imagine_coperta: z.string(),
+  logo: z.string().min(3, {
+    message: "Încărcați un logo",
+  }),
+  imagine_coperta: z.string().min(3, {
+    message: "Încărcați o imagine principală",
+  }),
   galerie: z.array(z.string()).min(1, {
     message: "Galeria trebuie să conțină cel puțin un element.",
   }),
-  telefon: z.string(),
-  nume_administrator:z.string(),
-  adresa_mail: z.string(),
+  telefon: z.string().min(3, {
+    message: "Adăugați numărul de telefon al administratorului",
+  }),
+  nume_administrator: z.string().min(3, {
+    message: "Adăugați numele administratorului",
+  }),
+  adresa_mail: z.string().email(),
+  descriere_regulament: z.string().min(3, {
+    message: "Adăugați descrierea/regulamentul bălții",
+  }),
 });
 export const CreateLakeForm = () => {
+  const [description, setDescription] = useState("");
+
+  useEffect(() => {
+    console.log(description);
+  }, [description]);
+
   const { mutate: createLake, isPending } = useMutation({
     mutationFn: async (lakeInfo: z.infer<typeof LakeformSchema>) => {
       const { data } = await axios.post("/api/lake", lakeInfo);
@@ -60,15 +83,16 @@ export const CreateLakeForm = () => {
       imagine_coperta: "",
       galerie: [],
       telefon: "",
-      nume_administrator:"",
+      nume_administrator: "",
       adresa_mail: "",
+      descriere_regulament: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof LakeformSchema>) {
     createLake(values);
   }
-
+  
   return (
     <div className="bg-white my-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container py-5">
       <Form {...form}>
@@ -148,7 +172,7 @@ export const CreateLakeForm = () => {
           <UploadMainImage setValue={form.setValue} />
           <FormField
             control={form.control}
-            name="imagine_coperta"
+            name="galerie"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="flex items-center gap-2.5 font-bold">
@@ -214,10 +238,30 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
+          <FormField
+            control={form.control}
+            name="descriere_regulament"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <MdDescription className="w-[14px] h-[14px]" />
+                  Descriere/Regulament
+                </FormLabel>
+                <FormControl>
+                  <Input className="hidden" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <LakeDescription setDescription={setDescription} />
 
-          <Button type="submit">
-            {isPending && <Loader2 className="mr-2 animate-spin" />} Submit
-          </Button>
+          <div className="w-full flex justify-end">
+            <Button type="submit" className="mt-10">
+              {isPending && <Loader2 className="mr-2 animate-spin" />} Adaugă
+              baltă
+            </Button>
+          </div>
         </form>
       </Form>{" "}
     </div>

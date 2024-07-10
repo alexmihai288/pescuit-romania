@@ -21,6 +21,7 @@ export const UploadLogo = ({
     telefon: string;
     adresa_mail: string;
     nume_administrator:string
+    descriere_regulament:string
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");

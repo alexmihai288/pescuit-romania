@@ -7,15 +7,10 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { db } from "@/lib/db";
 import React from "react";
 
-const AdaugaBaltaPage = async() => {
-
-  const lakes = await db.lake.findMany()
-
-  console.log(lakes)
-    return (
+const AdaugaBaltaPage = () => {
+  return (
     <div className="mt-32 container">
       <Breadcrumb>
         <BreadcrumbList>
@@ -25,13 +20,14 @@ const AdaugaBaltaPage = async() => {
           <BreadcrumbSeparator />
 
           <BreadcrumbItem>
-            <BreadcrumbPage className="font-semibold">Adaugă baltă</BreadcrumbPage>
+            <BreadcrumbPage className="font-semibold">
+              Adaugă baltă
+            </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
 
       <CreateLakeForm />
-
     </div>
   );
 };
