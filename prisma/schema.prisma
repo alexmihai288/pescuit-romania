@@ -14,11 +14,15 @@ datasource db {
 }
 
 model Lake {
-  id       String @id @default(uuid())
-  lakeName String
-  logoUrl String
-  phoneNumber String
-  location String
+  id               String   @id @default(uuid())
+  lakeName         String
+  location         String
+  logoUrl          String
+  mainImageUrl     String
+  galleryImageUrls String[] @default([])
+  phoneNumber      String
+  adminName        String
+  email            String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -20,6 +20,7 @@ export const UploadMainImage = ({
     galerie: string[];
     telefon: string;
     adresa_mail: string;
+    nume_administrator:string
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");

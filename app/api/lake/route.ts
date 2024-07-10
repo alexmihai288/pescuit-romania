@@ -45,6 +45,7 @@ export async function POST(req: Request) {
       adresa_mail,
       galerie,
       imagine_coperta,
+      nume_administrator,
       logo,
       nume_balta,
       telefon,
@@ -55,7 +56,11 @@ export async function POST(req: Request) {
         lakeName: nume_balta,
         location: adresa,
         logoUrl: logo,
+        mainImageUrl: imagine_coperta,
+        galleryImageUrls: galerie,
         phoneNumber: telefon,
+        adminName: nume_administrator,
+        email: adresa_mail,
       },
     });
 

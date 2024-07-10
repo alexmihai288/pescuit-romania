@@ -25,6 +25,7 @@ import { BsFillTelephoneFill } from "react-icons/bs";
 import { CiMail } from "react-icons/ci";
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
+import { RiContactsLine } from "react-icons/ri";
 
 export const LakeformSchema = z.object({
   nume_balta: z.string().min(2, {
@@ -39,6 +40,7 @@ export const LakeformSchema = z.object({
     message: "Galeria trebuie să conțină cel puțin un element.",
   }),
   telefon: z.string(),
+  nume_administrator:z.string(),
   adresa_mail: z.string(),
 });
 export const CreateLakeForm = () => {
@@ -58,6 +60,7 @@ export const CreateLakeForm = () => {
       imagine_coperta: "",
       galerie: [],
       telefon: "",
+      nume_administrator:"",
       adresa_mail: "",
     },
   });
@@ -170,9 +173,25 @@ export const CreateLakeForm = () => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Numele de telefon al bății sau al administratorului"
+                    placeholder="Numărul de telefon al bății sau al administratorului"
                     {...field}
                   />
+                </FormControl>
+                <FormDescription></FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="nume_administrator"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <RiContactsLine /> Numele administratorului
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Numele administratorului" {...field} />
                 </FormControl>
                 <FormDescription></FormDescription>
                 <FormMessage />
