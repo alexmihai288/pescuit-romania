@@ -1,11 +1,22 @@
 "use client";
 import React, { Component } from "react";
-import { EditorState} from "draft-js";
+import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import { UseFormSetValue } from "react-hook-form";
 
 interface LakeDescriptionProps {
-  setDescription: (description: string) => void;
+  setValue: UseFormSetValue<{
+    nume_balta: string;
+    adresa: string;
+    logo: string;
+    imagine_coperta: string;
+    galerie: string[];
+    telefon: string;
+    adresa_mail: string;
+    nume_administrator: string;
+    descriere_regulament: string;
+  }>;
 }
 
 class LakeDescription extends Component<LakeDescriptionProps> {
@@ -17,7 +28,7 @@ class LakeDescription extends Component<LakeDescriptionProps> {
     this.setState({ editorState });
     const contentState = editorState.getCurrentContent();
     const plainText = contentState.getPlainText();
-    this.props.setDescription(plainText);
+    this.props.setValue("descriere_regulament", plainText);
   };
 
   render() {

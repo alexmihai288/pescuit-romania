@@ -49,6 +49,7 @@ export async function POST(req: Request) {
       logo,
       nume_balta,
       telefon,
+      descriere_regulament,
     } = data;
 
     const lake = await db.lake.create({
@@ -61,6 +62,7 @@ export async function POST(req: Request) {
         phoneNumber: telefon,
         adminName: nume_administrator,
         email: adresa_mail,
+        lakeInfo: descriere_regulament,
       },
     });
 

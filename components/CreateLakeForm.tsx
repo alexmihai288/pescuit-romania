@@ -92,7 +92,7 @@ export const CreateLakeForm = () => {
   function onSubmit(values: z.infer<typeof LakeformSchema>) {
     createLake(values);
   }
-  
+
   return (
     <div className="bg-white my-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container py-5">
       <Form {...form}>
@@ -111,7 +111,6 @@ export const CreateLakeForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription></FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -131,7 +130,6 @@ export const CreateLakeForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription></FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -201,7 +199,6 @@ export const CreateLakeForm = () => {
                     {...field}
                   />
                 </FormControl>
-                <FormDescription></FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -254,12 +251,14 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <LakeDescription setDescription={setDescription} />
+          <LakeDescription setValue={form.setValue} />
 
           <div className="w-full flex justify-end">
-            <Button type="submit" className="mt-10">
-              {isPending && <Loader2 className="mr-2 animate-spin" />} Adaugă
-              baltă
+            <Button type="submit" className="mt-10" disabled={isPending}>
+              {isPending && (
+                <Loader2 className="mr-2 animate-spin w-[16px] h-[16px]" />
+              )}{" "}
+              Adaugă baltă
             </Button>
           </div>
         </form>

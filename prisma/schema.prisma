@@ -23,6 +23,7 @@ model Lake {
   phoneNumber      String
   adminName        String
   email            String
+  lakeInfo         String
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
