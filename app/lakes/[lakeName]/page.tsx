@@ -15,7 +15,9 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
       <div>
       <LakeHero lake={lake!}/>
       </div>
-      <div className="my-32 container"></div>
+      <div className="my-32 container bg-[#f3f4f6]">
+        daskodakso
+      </div>
     </main>
   );
 };

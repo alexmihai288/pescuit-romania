@@ -7,6 +7,14 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Lake } from "@prisma/client";
 import { MapPin, Phone } from "lucide-react";
 import { FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -18,6 +26,38 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
         alt="main"
         className="object-cover max-h-[80vh] brightness-50"
       />
+      <div className="self-center absolute top-10 left-5 h-10 rounded-md flex justify-end">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                href="/"
+                className="text-zinc-300 hover:text-zinc-400"
+              >
+                Home
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+
+            <BreadcrumbItem>
+              <BreadcrumbLink
+                href="/"
+                className="text-zinc-300 hover:text-zinc-400"
+              >
+                Lacuri
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator />
+
+            <BreadcrumbItem>
+              <BreadcrumbPage className="font-semibold text-white">
+                {lake.lakeName}
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      </div>
+
       <div className="self-center absolute top-10 bg-white right-5 h-10 rounded-md flex justify-end">
         <div className="flex items-center justify-center gap-2.5 py-2.5 px-5">
           <Link href="/login">
@@ -62,7 +102,7 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
             <FaStar className="text-[#ffd700]" />
             <FaStar className="text-[#ffd700]" />
             <FaStar className="text-[#ffd700]" />
-            <FaRegStarHalfStroke className="text-[#ffd700]" />    
+            <FaRegStarHalfStroke className="text-[#ffd700]" />
           </div>
         </div>
       </div>
