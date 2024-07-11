@@ -62,7 +62,7 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
             <FaStar className="text-[#ffd700]" />
             <FaStar className="text-[#ffd700]" />
             <FaStar className="text-[#ffd700]" />
-            <FaRegStarHalfStroke className="text-[#ffd700]" />
+            <FaRegStarHalfStroke className="text-[#ffd700]" />    
           </div>
         </div>
       </div>
