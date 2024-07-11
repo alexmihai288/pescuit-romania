@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Lake } from "@prisma/client";
 import { MapPin, Phone } from "lucide-react";
+import { FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -28,39 +29,41 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 text-white w-full">
-        <div className="container">
+      <div className="absolute bottom-0 left-0 right-0 text-white w-full flex justify-between container">
+        <div className="">
           <div className="absolute bottom-0 text-white p-2">
-            <div className="flex gap-2">
-              <Avatar>
+            <div className="flex gap-3">
+              <Avatar className="h-20 w-20">
                 <AvatarImage src={lake.logoUrl} />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <p className="font-semibold">{lake.lakeName}</p>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-[14px] h-[14px]" />
+                <p className="font-bold text-4xl">{lake.lakeName}</p>
+                <Link
+                  href={`tel:${lake.phoneNumber}`}
+                  className="flex items-center gap-2 text-lg"
+                >
+                  <Phone className="w-[18px] h-[18px]" />
                   {lake.phoneNumber}
-                </div>
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-[14px] h-[14px]" />
+                </Link>
+                <div className="flex items-center gap-2 text-lg">
+                  <MapPin className="w-[18px] h-[18px]" />
                   {lake.location}
                 </div>
               </div>
             </div>
           </div>
-          {/* <div className="flex justify-center mt-5">
-            <Badge className="bg-emerald-700">
-              Informații validate{" "}
-              <Image
-                src="/ro.svg"
-                alt="ro"
-                width={20}
-                height={20}
-                className="rounded-md ml-2"
-              />
-            </Badge>
-          </div> */}
+        </div>
+
+        <div className="p-2">
+          <p>Recenzii</p>
+          <div className="flex items-center">
+            <FaStar className="text-[#ffd700]" />
+            <FaStar className="text-[#ffd700]" />
+            <FaStar className="text-[#ffd700]" />
+            <FaStar className="text-[#ffd700]" />
+            <FaRegStarHalfStroke className="text-[#ffd700]" />
+          </div>
         </div>
       </div>
     </div>
