@@ -15,6 +15,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -95,15 +96,18 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
           </div>
         </div>
 
-        <div className="p-2">
-          <p>Recenzii</p>
-          <div className="flex items-center">
-            <FaStar className="text-[#ffd700]" />
-            <FaStar className="text-[#ffd700]" />
-            <FaStar className="text-[#ffd700]" />
-            <FaStar className="text-[#ffd700]" />
-            <FaRegStarHalfStroke className="text-[#ffd700]" />
+        <div className="p-2 flex gap-2">
+          <div className="">
+            <p>Recenzii</p>
+            <div className="flex items-center">
+              <FaStar className="text-[#ffd700]" />
+              <FaStar className="text-[#ffd700]" />
+              <FaStar className="text-[#ffd700]" />
+              <FaStar className="text-[#ffd700]" />
+              <FaRegStarHalfStroke className="text-[#ffd700]" />
+            </div>
           </div>
+          <Button variant="secondary">Trimite email</Button>
         </div>
       </div>
     </div>

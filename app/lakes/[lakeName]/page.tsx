@@ -24,7 +24,7 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
         <LakeHero lake={lake!} />
       </div>
       <div className="container my-32">
-        <div className="flex justify-between bg-white rounded-md">
+        <div className="flex justify-between bg-white rounded-md shadow-2xl">
           <div className="p-2.5">
             <h1 className="font-extrabold flex items-center gap-2">
               <CgDetailsMore /> Detalii
