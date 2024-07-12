@@ -10,6 +10,8 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import { MdOutlineStorage } from "react-icons/md";
+import { LuTreePine } from "react-icons/lu";
 
 const LakePage = async ({ params }: { params: { lakeName: string } }) => {
   const lake = await db.lake.findFirst({
@@ -51,7 +53,39 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
         </div>
       </div>
 
-      <div>test</div>
+      <div className="container">
+        <h1 className="font-extrabold flex items-center gap-2 mb-10">
+          <MdOutlineStorage />
+          Facilități
+        </h1>
+
+        <div className="grid grid-cols-3 space-y-5">
+          <div className="flex items-center gap-2 justify-center">
+            <div className="rounded-full bg-zinc-300 p-4 w-fit">
+              <LuTreePine className="text-green-500" />
+            </div>
+            <p className="font-semibold tracking-tight">Umbră</p>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <div className="rounded-full bg-zinc-300 p-4 w-fit">
+              <LuTreePine className="text-green-500" />
+            </div>
+            <p className="font-semibold tracking-tight">Umbră</p>
+          </div>{" "}
+          <div className="flex items-center gap-2 justify-center">
+            <div className="rounded-full bg-zinc-300 p-4 w-fit">
+              <LuTreePine className="text-green-500" />
+            </div>
+            <p className="font-semibold tracking-tight">Umbră</p>
+          </div>
+          <div className="flex items-center gap-2 justify-center">
+            <div className="rounded-full bg-zinc-300 p-4 w-fit">
+              <LuTreePine className="text-green-500" />
+            </div>
+            <p className="font-semibold tracking-tight">Umbră</p>
+          </div>
+        </div>
+      </div>
     </main>
   );
 };

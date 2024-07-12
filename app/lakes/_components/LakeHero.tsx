@@ -2,7 +2,6 @@ import Image from "next/image";
 import React from "react";
 // import { Badge } from "./ui/badge";
 // import { Separator } from "./ui/separator";
-import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Lake } from "@prisma/client";
 import { MapPin, Phone } from "lucide-react";
@@ -15,7 +14,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -107,7 +107,12 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
               <FaRegStarHalfStroke className="text-[#ffd700]" />
             </div>
           </div>
-          <Button variant="secondary">Trimite email</Button>
+          <Link
+            href={`mailto:${lake.email}`}
+            className={buttonVariants({ variant: "secondary" })}
+          >
+            Trimite email
+          </Link>
         </div>
       </div>
     </div>
