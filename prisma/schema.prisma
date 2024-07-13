@@ -13,17 +13,33 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Facilities {
+  PlataCard
+  AccesMasina
+  Casute
+  Gratar
+  Iluminat
+  InchirieriBarci
+  Internet
+  LocPentruCopii
+  MagazinMomeala
+  Pontoane
+  Toalete
+  Umbra
+}
+
 model Lake {
-  id               String   @id @default(uuid())
+  id               String       @id @default(uuid())
   lakeName         String
   location         String
   logoUrl          String
   mainImageUrl     String
-  galleryImageUrls String[] @default([])
+  galleryImageUrls String[]     @default([])
   phoneNumber      String
   adminName        String
   email            String
   lakeInfo         String
+  facilities       Facilities[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

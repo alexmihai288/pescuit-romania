@@ -18,6 +18,7 @@ export const UploadLogo = ({
     logo: string;
     imagine_coperta: string;
     galerie: string[];
+    facilitati:string[]
     telefon: string;
     adresa_mail: string;
     nume_administrator:string

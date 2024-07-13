@@ -14,7 +14,7 @@ import { Button } from "../../../components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { MdDriveFileRenameOutline } from "react-icons/md";
+import { MdDriveFileRenameOutline, MdOutlineStorage } from "react-icons/md";
 import { Loader2, MapPin } from "lucide-react";
 import { UploadLogo } from "./UploadLogo";
 import { FaImage } from "react-icons/fa6";
@@ -30,6 +30,7 @@ import { RiContactsLine } from "react-icons/ri";
 import { MdDescription } from "react-icons/md";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import { AddFacilities } from "./AddFacilities";
 const LakeDescription = dynamic(() => import("./LakeDescription"), {
   ssr: false,
 });
@@ -48,7 +49,10 @@ export const LakeformSchema = z.object({
     message: "Încărcați o imagine principală",
   }),
   galerie: z.array(z.string()).min(1, {
-    message: "Galeria trebuie să conțină cel puțin un element.",
+    message: "Galeria trebuie să conțină cel puțin un element",
+  }),
+  facilitati: z.array(z.string()).min(1, {
+    message: "Balta trebuie să conțină cel puțin o facilitate",
   }),
   telefon: z.string().min(3, {
     message: "Adăugați numărul de telefon al administratorului",
@@ -81,6 +85,7 @@ export const CreateLakeForm = () => {
       logo: "",
       imagine_coperta: "",
       galerie: [],
+      facilitati: [],
       telefon: "",
       nume_administrator: "",
       adresa_mail: "",
@@ -184,6 +189,26 @@ export const CreateLakeForm = () => {
             )}
           />
           <UploadGallery setValue={form.setValue} getValues={form.getValues} />
+
+          <FormField
+            control={form.control}
+            name="facilitati"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <MdOutlineStorage className="w-[14px] h-[14px]" />
+                  Adaugă facilități
+                </FormLabel>
+                <FormControl>
+                  <Input className="hidden" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <AddFacilities />
+          {/* <UploadGallery setValue={form.setValue} getValues={form.getValues} /> */}
+
           <FormField
             control={form.control}
             name="telefon"

@@ -18,10 +18,11 @@ export const UploadMainImage = ({
     logo: string;
     imagine_coperta: string;
     galerie: string[];
+    facilitati: string[];
     telefon: string;
     adresa_mail: string;
-    nume_administrator:string
-    descriere_regulament:string
+    nume_administrator: string;
+    descriere_regulament: string;
   }>;
 }) => {
   const [imageUrl, setImageUrl] = useState<string>("");
