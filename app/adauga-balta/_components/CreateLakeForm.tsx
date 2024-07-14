@@ -206,8 +206,7 @@ export const CreateLakeForm = () => {
               </FormItem>
             )}
           />
-          <AddFacilities />
-          {/* <UploadGallery setValue={form.setValue} getValues={form.getValues} /> */}
+          <AddFacilities setValue={form.setValue} getValues={form.getValues} />
 
           <FormField
             control={form.control}

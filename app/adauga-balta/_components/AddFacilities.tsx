@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { Facilities } from "@prisma/client";
 import { Check, Plus, X } from "lucide-react";
 import React, { useState } from "react";
+import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
 
 const facilitiesMapping = {
   PlataCard: "Plata Card",
@@ -19,13 +20,44 @@ const facilitiesMapping = {
   Umbra: "Umbră",
 };
 
-export const AddFacilities = () => {
+export const AddFacilities = ({
+  setValue,
+  getValues,
+}: {
+  setValue: UseFormSetValue<{
+    nume_balta: string;
+    adresa: string;
+    logo: string;
+    imagine_coperta: string;
+    galerie: string[];
+    facilitati: string[];
+    telefon: string;
+    adresa_mail: string;
+    nume_administrator: string;
+    descriere_regulament: string;
+  }>;
+  getValues: UseFormGetValues<{
+    nume_balta: string;
+    adresa: string;
+    logo: string;
+    imagine_coperta: string;
+    galerie: string[];
+    facilitati: string[];
+    telefon: string;
+    adresa_mail: string;
+    nume_administrator: string;
+    descriere_regulament: string;
+  }>;
+}) => {
   const facilitiesArray = Object.values(Facilities);
 
   const [addedFacilities, setAddedFacilities] = useState<string[]>([]);
   const [hoveredFacility, setHoveredFacility] = useState<string | null>(null);
 
   const handleAddFacility = (facility: string) => {
+    const currentFacilities = getValues("facilitati");
+    const updatedFacilities = [...currentFacilities, facility];
+    setValue("facilitati", updatedFacilities);
     setAddedFacilities((prev) => {
       if (prev.includes(facility)) {
         return prev; // Don't add duplicates
@@ -35,6 +67,11 @@ export const AddFacilities = () => {
   };
 
   const handleRemoveFacility = (facility: string) => {
+    const currentFacilities = getValues("facilitati");
+    const updatedFacilities = currentFacilities.filter(
+      (item) => item !== facility
+    );
+    setValue("facilitati", updatedFacilities);
     setAddedFacilities((prev) => prev.filter((item) => item !== facility));
   };
 

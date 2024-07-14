@@ -1,4 +1,3 @@
-import { LakeformSchema } from "@/app/adauga-balta/_components/CreateLakeForm";
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
@@ -44,6 +43,7 @@ export async function POST(req: Request) {
       adresa,
       adresa_mail,
       galerie,
+      facilitati,
       imagine_coperta,
       nume_administrator,
       logo,
@@ -59,6 +59,7 @@ export async function POST(req: Request) {
         logoUrl: logo,
         mainImageUrl: imagine_coperta,
         galleryImageUrls: galerie,
+        facilities: facilitati,
         phoneNumber: telefon,
         adminName: nume_administrator,
         email: adresa_mail,
