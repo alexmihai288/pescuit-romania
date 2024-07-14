@@ -12,6 +12,46 @@ import {
 import Image from "next/image";
 import { MdOutlineStorage } from "react-icons/md";
 import { LuTreePine } from "react-icons/lu";
+import { AiOutlineCar } from "react-icons/ai";
+import {
+  FaHome,
+  FaLightbulb,
+  FaWifi,
+  FaChild,
+  FaStore,
+  FaToilet,
+  FaUmbrella,
+} from "react-icons/fa";
+import { TbGrill } from "react-icons/tb";
+import { LuSailboat } from "react-icons/lu";
+import { CiCreditCard1 } from "react-icons/ci";
+import { GiWoodenCrate } from "react-icons/gi";
+
+interface Facility {
+  label: string;
+  icon: JSX.Element;
+}
+
+// Define a type for the facilities mapping
+type FacilitiesMapping = {
+  [key: string]: Facility;
+};
+
+// Create the facilitiesMapping object with the defined type
+const facilitiesMapping: FacilitiesMapping = {
+  PlataCard: { label: "Plata Card", icon: <CiCreditCard1 /> },
+  AccesMasina: { label: "Acces Mașină", icon: <AiOutlineCar /> },
+  Casute: { label: "Căsuțe", icon: <FaHome /> },
+  Gratar: { label: "Grătar", icon: <TbGrill /> },
+  Iluminat: { label: "Iluminat", icon: <FaLightbulb /> },
+  InchirieriBarci: { label: "Închirieri Bărci", icon: <LuSailboat /> },
+  Internet: { label: "Internet", icon: <FaWifi /> },
+  LocPentruCopii: { label: "Loc Pentru Copii", icon: <FaChild /> },
+  MagazinMomeala: { label: "Magazin Momeală", icon: <FaStore /> },
+  Pontoane: { label: "Pontoane", icon: <GiWoodenCrate /> },
+  Toalete: { label: "Toalete", icon: <FaToilet /> },
+  Umbra: { label: "Umbră", icon: <FaUmbrella /> },
+};
 
 const LakePage = async ({ params }: { params: { lakeName: string } }) => {
   const lake = await db.lake.findFirst({
@@ -54,37 +94,32 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
       </div>
 
       <div className="container">
-        <h1 className="font-extrabold flex items-center gap-2 mb-10">
+        <h1
+          className="font-extr
+        abold flex items-center gap-2 mb-10"
+        >
           <MdOutlineStorage />
           Facilități
         </h1>
 
-        <div className="grid grid-cols-3 space-y-5">
-          <div className="flex items-center gap-2 justify-center">
-            <div className="rounded-full bg-zinc-300 p-4 w-fit">
-              <LuTreePine className="text-green-500" />
+        <div className="grid grid-cols-3 mb-32">
+          {lake?.facilities.map((facility) => (
+            <div
+              className="flex items-center gap-2 justify-center"
+              key={facility}
+            >
+              <div className="rounded-full bg-zinc-300 p-4 w-fit">
+                {/* <LuTreePine className="text-green-500" /> */}
+                {facilitiesMapping[facility].icon}
+              </div>
+              <p className="font-semibold tracking-tight">
+                {facilitiesMapping[facility].label}
+              </p>
             </div>
-            <p className="font-semibold tracking-tight">Umbră</p>
-          </div>
-          <div className="flex items-center gap-2 justify-center">
-            <div className="rounded-full bg-zinc-300 p-4 w-fit">
-              <LuTreePine className="text-green-500" />
-            </div>
-            <p className="font-semibold tracking-tight">Umbră</p>
-          </div>{" "}
-          <div className="flex items-center gap-2 justify-center">
-            <div className="rounded-full bg-zinc-300 p-4 w-fit">
-              <LuTreePine className="text-green-500" />
-            </div>
-            <p className="font-semibold tracking-tight">Umbră</p>
-          </div>
-          <div className="flex items-center gap-2 justify-center">
-            <div className="rounded-full bg-zinc-300 p-4 w-fit">
-              <LuTreePine className="text-green-500" />
-            </div>
-            <p className="font-semibold tracking-tight">Umbră</p>
-          </div>
+          ))}
         </div>
+
+        <div>pai naa</div>
       </div>
     </main>
   );

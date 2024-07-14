@@ -1,24 +1,10 @@
 "use client";
 import { Separator } from "@/components/ui/separator";
+import { facilitiesMapping } from "@/constants";
 import { Facilities } from "@prisma/client";
 import { Check, Plus, X } from "lucide-react";
 import React, { useState } from "react";
 import { UseFormGetValues, UseFormSetValue } from "react-hook-form";
-
-const facilitiesMapping = {
-  PlataCard: "Plata Card",
-  AccesMasina: "Acces Mașină",
-  Casute: "Căsuțe",
-  Gratar: "Grătar",
-  Iluminat: "Iluminat",
-  InchirieriBarci: "Închirieri Bărci",
-  Internet: "Internet",
-  LocPentruCopii: "Loc Pentru Copii",
-  MagazinMomeala: "Magazin Momeală",
-  Pontoane: "Pontoane",
-  Toalete: "Toalete",
-  Umbra: "Umbră",
-};
 
 export const AddFacilities = ({
   setValue,
