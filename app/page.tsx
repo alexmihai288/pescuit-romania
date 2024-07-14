@@ -1,11 +1,11 @@
+import { Filters } from "@/components/Filters";
 import { Hero } from "@/components/Hero";
 import { Lakes } from "@/components/Lakes";
 import { SearchLake } from "@/components/SearchLake";
 import { db } from "@/lib/db";
 
 export default async function Home() {
-
-  const lakes = await db.lake.findMany()
+  const lakes = await db.lake.findMany();
 
   return (
     <main>
@@ -17,12 +17,11 @@ export default async function Home() {
       </div>
       <div className="my-32 container">
         <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
-        <div className="mt-10">
-          <Lakes initialLakes={lakes}/>
+        <div className="mt-10 flex">
+            <Filters />
+          <Lakes initialLakes={lakes} />
         </div>
       </div>
-
-
     </main>
   );
 }
