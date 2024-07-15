@@ -12,9 +12,7 @@ export const SearchLake = () => {
   const debouncedValue = useDebounce(value, 500);
 
   useEffect(() => {
-    const query = {
-      nume: debouncedValue,
-    };
+    const query = debouncedValue ? { nume: debouncedValue } : {};
 
     const url = qs.stringifyUrl({
       url: "/",
