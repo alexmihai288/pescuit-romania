@@ -15,13 +15,45 @@ export default async function Home() {
           <SearchLake />
         </div>
       </div>
-      <div className="my-32 container">
-        <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
-        <div className="mt-10 flex">
-            <Filters />
-          <Lakes initialLakes={lakes} />
+      <div className="my-32 container flex gap-10">
+        <Filters />
+        <div>
+          <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
+          <div className="mt-10">
+            <Lakes initialLakes={lakes} />
+          </div>
         </div>
       </div>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
+      <p>test</p>
     </main>
   );
 }
