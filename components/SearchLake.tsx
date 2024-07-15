@@ -1,9 +1,29 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { PlaceholdersAndVanishInput } from "./ui/PlaceholderInput";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useDebounce } from "@/hooks/useDebounce";
+import qs from "query-string";
 
 export const SearchLake = () => {
+  const router = useRouter();
+  const [value, setValue] = useState<string>("");
+  const debouncedValue = useDebounce(value, 500);
+
+  useEffect(() => {
+    const query = {
+      nume: debouncedValue,
+    };
+
+    const url = qs.stringifyUrl({
+      url: "/",
+      query: query,
+    });
+
+    router.push(url, { scroll: false });
+  }, [debouncedValue, router]);
+
   return (
     <div className="bg-white h-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container pt-5">
       <div className="flex items-center justify-between">
@@ -14,7 +34,7 @@ export const SearchLake = () => {
         <Image src="/fish.svg" width={20} height={20} alt="fish" />
         <PlaceholdersAndVanishInput
           placeholders={["Lake1", "Lake2"]}
-          onChange={() => {}}
+          onChange={(e) => setValue(e.target.value)}
           onSubmit={() => {}}
         />
         <Image
@@ -51,7 +71,7 @@ export const SearchLake = () => {
           height={20}
           alt="fish"
           className="flip-horizontal"
-        />  
+        />
       </div>
     </div>
   );

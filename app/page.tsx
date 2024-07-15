@@ -4,8 +4,20 @@ import { Lakes } from "@/components/Lakes";
 import { SearchLake } from "@/components/SearchLake";
 import { db } from "@/lib/db";
 
-export default async function Home() {
-  const lakes = await db.lake.findMany();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { nume: string };
+}) {
+  let lakes;
+  lakes = await db.lake.findMany({
+    where: {
+      lakeName: {
+        startsWith: searchParams.nume,
+        mode: "insensitive", // Make the search case-insensitive if necessary
+      },
+    },
+  });
 
   return (
     <main>
@@ -18,9 +30,11 @@ export default async function Home() {
       <div className="my-32 container flex gap-10">
         <Filters />
         <div>
-          <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
+          {lakes.length > 0 && (
+            <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
+          )}
           <div className="mt-10">
-            <Lakes initialLakes={lakes} />
+            <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
           </div>
         </div>
       </div>
