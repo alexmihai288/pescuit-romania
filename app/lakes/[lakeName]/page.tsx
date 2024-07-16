@@ -118,7 +118,10 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
             </div>
           ))}
         </div>
+      </div>
 
+      
+      <div className="container">
         <div>pai naa</div>
       </div>
     </main>
