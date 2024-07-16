@@ -49,15 +49,30 @@ export const MarketPlace = () => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-2.5 rounded-r-sm">
+          <div className="bg-white p-2.5 rounded-r-sm flex flex-col">
             <div className="flex items-center justify-between">
-            <h1 className="font-semibold whitespace-nowrap">Jeep Wrangler</h1>
-            <p className="font-bold">1000 lei</p>
+              <h1 className="font-semibold whitespace-nowrap">Jeep Wrangler</h1>
+              <p className="font-bold">1000 lei</p>
             </div>
-            <Badge className="bg-[#f2f4f5] text-black my-2.5">Timisoara</Badge>
+            <Badge className="bg-[#f2f4f5] text-black my-2.5 w-fit hover:bg-[#bfc1c2]">
+              Timisoara
+            </Badge>
             <p className="text-sm p-2.5">
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus, molestiae. Animi ratione, alias in ipsum amet velit exercitationem corporis quod iste quasi incidunt excepturi ab quia id, quibusdam maxime odit?
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+              Repellendus, molestiae. Animi ratione, alias in ipsum amet velit
+              exercitationem corporis quod iste quasi incidunt excepturi ab quia
+              id, quibusdam maxime odit?
             </p>
+
+            <div className="flex items-center justify-between mt-auto self-end w-full">
+              <p className="font-semibold align-baseline text-xs">
+                Adăgat la 15 mai 2024
+              </p>
+              <Button className="">
+                <Phone className="w-[14px] h-[14px] mr-2.5" />
+                Sună
+              </Button>
+            </div>
           </div>
         </Link>
       </div>
