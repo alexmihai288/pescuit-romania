@@ -1,22 +1,37 @@
 import { Filters } from "@/components/Filters";
 import { Hero } from "@/components/Hero";
 import { Lakes } from "@/components/Lakes";
+import { MarketPlace } from "@/components/MarketPlace";
 import { SearchLake } from "@/components/SearchLake";
+import { Button } from "@/components/ui/button";
 import { db } from "@/lib/db";
 
 export default async function Home({
   searchParams,
 }: {
-  searchParams: { nume: string };
+  searchParams: { nume: string; facilitati: string };
 }) {
   let lakes;
-  lakes = await db.lake.findMany({
-    where: {
-      lakeName: {
-        startsWith: searchParams.nume,
-        mode: "insensitive", // Make the search case-insensitive if necessary
-      },
+
+  // Prepare filters based on searchParams
+  const whereClause = {
+    lakeName: {
+      startsWith: searchParams.nume,
+      mode: "insensitive", // Make the search case-insensitive if necessary
     },
+  };
+
+  if (searchParams.facilitati) {
+    //@ts-ignore
+    whereClause.facilities = {
+      hasSome: searchParams.facilitati.split(","),
+    };
+  }
+
+  lakes = await db.lake.findMany({
+    //@ts-ignore
+    where: whereClause,
+    take: 9,
   });
 
   return (
@@ -29,45 +44,22 @@ export default async function Home({
       </div>
       <div className="my-32 container flex gap-10">
         <Filters />
-        <div>
+        <div className="flex flex-col h-screen">
           {lakes.length > 0 && (
             <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
           )}
           <div className="mt-10">
             <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
           </div>
+          <Button className="mt-auto self-center" variant="superOutline">
+            Vezi toate bălțiile
+          </Button>
         </div>
       </div>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
-      <p>test</p>
+
+      <div className="bg-[#047857] p-2.5 my-32">
+        <MarketPlace />
+      </div>
     </main>
   );
 }

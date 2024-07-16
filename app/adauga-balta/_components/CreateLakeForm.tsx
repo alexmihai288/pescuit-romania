@@ -72,9 +72,9 @@ export const CreateLakeForm = () => {
       const { data } = await axios.post("/api/lake", lakeInfo);
       return data;
     },
-    onSuccess: () => {
-      router.push("/");
-    },
+    // onSuccess: () => {
+    //   router.push("/");
+    // },
   });
 
   const form = useForm<z.infer<typeof LakeformSchema>>({
