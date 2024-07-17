@@ -1,5 +1,6 @@
 export const navItems = [
   { name: "Adaugă baltă", link: "/adauga-balta" },
+  { name: "Adaugă articol pescuit", link: "/adauga-articol" },
   { name: "Top locații", link: "#testimonials" },
   { name: "Caută", link: "#locuri" },
 ];

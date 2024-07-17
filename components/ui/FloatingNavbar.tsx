@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
-import { PlusCircle, Search, Trophy } from "lucide-react";
+import { PlusCircle, Search, ShoppingBasket, Trophy } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export const FloatingNav = ({
@@ -92,8 +92,9 @@ export const FloatingNav = ({
                 )}
               />
             )}
+
             {idx === 1 && (
-              <Trophy
+              <ShoppingBasket
                 className={cn(
                   "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",
                   pathname === navItem.link && "text-primary"
@@ -101,6 +102,14 @@ export const FloatingNav = ({
               />
             )}
             {idx === 2 && (
+              <Trophy
+                className={cn(
+                  "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",
+                  pathname === navItem.link && "text-primary"
+                )}
+              />
+            )}
+            {idx === 3 && (
               <Search
                 className={cn(
                   "text-muted-foreground h-4 w-4 group-hover:text-primary transition-colors",

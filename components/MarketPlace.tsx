@@ -25,7 +25,7 @@ export const MarketPlace = () => {
               alt="main"
               className="max-h-[500px] max-w-[500px] object-cover rounded-l-sm brightness-75 hover:brightness-50 duration-200"
             />
-
+  
             <div className="self-center absolute text-white top-1/2 bottom-1/2 left-1/2 right-1/2 opacity-0 flex justify-center group-hover:opacity-100 duration-200 ">
               <Button variant="super" size="sm" className="uppercase text-xs">
                 Vezi detalii

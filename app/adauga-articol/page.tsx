@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import React from "react";
 
-const AdaugaBaltaPage = () => {
+const AdaugaArticolPage = () => {
   return (
     <div className="mt-32 container">
       <Breadcrumb>
@@ -21,7 +21,7 @@ const AdaugaBaltaPage = () => {
 
           <BreadcrumbItem>
             <BreadcrumbPage className="font-semibold">
-              Adaugă baltă
+              Adaugă articol pescuit
             </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
@@ -32,4 +32,4 @@ const AdaugaBaltaPage = () => {
   );
 };
 
-export default AdaugaBaltaPage;
+export default AdaugaArticolPage;
