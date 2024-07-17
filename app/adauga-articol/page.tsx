@@ -8,6 +8,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React from "react";
+import { CreateArticleForm } from "./_components/CreateArticleForm";
 
 const AdaugaArticolPage = () => {
   return (
@@ -27,7 +28,7 @@ const AdaugaArticolPage = () => {
         </BreadcrumbList>
       </Breadcrumb>
 
-      <CreateLakeForm />
+      <CreateArticleForm />
     </div>
   );
 };
