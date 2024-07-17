@@ -51,8 +51,8 @@ export const ArticleFormSchema = z.object({
 export const CreateArticleForm = () => {
   const router = useRouter();
   const { mutate: createLake, isPending } = useMutation({
-    mutationFn: async (lakeInfo: z.infer<typeof ArticleFormSchema>) => {
-      const { data } = await axios.post("/api/lake", lakeInfo);
+    mutationFn: async (articleInfo: z.infer<typeof ArticleFormSchema>) => {
+      const { data } = await axios.post("/api/article", articleInfo);
       return data;
     },
     onSuccess: () => {
@@ -77,7 +77,7 @@ export const CreateArticleForm = () => {
   }
 
   return (
-    <div className="bg-white my-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container py-5">
+    <div className="bg-white my-20 shadow-[#047857] shadow-sm rounded-md w-full max-w-5xl container py-5">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
           <FormField
@@ -191,7 +191,7 @@ export const CreateArticleForm = () => {
               {isPending && (
                 <Loader2 className="mr-2 animate-spin w-[16px] h-[16px]" />
               )}{" "}
-              Adaugă baltă
+              Adaugă articol
             </Button>
           </div>
         </form>

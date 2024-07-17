@@ -34,6 +34,13 @@ export default async function Home({
     take: 9,
   });
 
+  const articles = await db.article.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    take: 3,
+  });
+
   return (
     <main>
       <div className="relative">
@@ -58,7 +65,7 @@ export default async function Home({
       </div>
 
       <div className="bg-[#047857] p-2.5 my-32">
-        <MarketPlace />
+        <MarketPlace lastArticles={articles} />
       </div>
     </main>
   );
