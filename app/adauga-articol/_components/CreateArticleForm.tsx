@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -14,7 +13,7 @@ import { Button } from "../../../components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { MdDriveFileRenameOutline, MdOutlineStorage } from "react-icons/md";
+import { MdDriveFileRenameOutline } from "react-icons/md";
 import { Loader2, MapPin } from "lucide-react";
 import { TfiImage } from "react-icons/tfi";
 import { BsFillTelephoneFill } from "react-icons/bs";
@@ -22,6 +21,9 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { MdDescription } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import { UploadArticleGallery } from "./UploadArticleGallery";
+import ArticleDescription from "./ArticleDescription";
+import { RiPriceTag3Line } from "react-icons/ri";
 
 export const ArticleFormSchema = z.object({
   title: z.string().min(2, {
@@ -39,9 +41,12 @@ export const ArticleFormSchema = z.object({
   infoArticol: z.string().min(3, {
     message: "Adăugați o descriere articolului",
   }),
-  pret: z.string().min(1, {
-    message: "Adăugați prețul articolului",
-  }),
+  pret: z
+    .string()
+    .min(1, { message: "Adăugați prețul articolului" })
+    .refine((value) => !isNaN(Number(value)), {
+      message: "Prețul trebuie să fie un număr valid",
+    }),
 });
 export const CreateArticleForm = () => {
   const router = useRouter();
@@ -50,9 +55,9 @@ export const CreateArticleForm = () => {
       const { data } = await axios.post("/api/lake", lakeInfo);
       return data;
     },
-    // onSuccess: () => {
-    //   router.push("/");
-    // },
+    onSuccess: () => {
+      router.push("/");
+    },
   });
 
   const form = useForm<z.infer<typeof ArticleFormSchema>>({
@@ -92,6 +97,21 @@ export const CreateArticleForm = () => {
           />
           <FormField
             control={form.control}
+            name="pret"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel className="flex items-center gap-2.5 font-bold">
+                  <RiPriceTag3Line /> Preț articol
+                </FormLabel>
+                <FormControl>
+                  <Input placeholder="Prețul de vânzare" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
             name="adresa"
             render={({ field }) => (
               <FormItem>
@@ -116,7 +136,7 @@ export const CreateArticleForm = () => {
               <FormItem>
                 <FormLabel className="flex items-center gap-2.5 font-bold">
                   <TfiImage className="w-[14px] h-[14px]" />
-                  Galerie
+                  Poze articol
                 </FormLabel>
                 <FormControl>
                   <Input className="hidden" {...field} />
@@ -125,7 +145,10 @@ export const CreateArticleForm = () => {
               </FormItem>
             )}
           />
-          {/* <UploadGallery setValue={form.setValue} getValues={form.getValues} /> */}
+          <UploadArticleGallery
+            setValue={form.setValue}
+            getValues={form.getValues}
+          />
 
           <FormField
             control={form.control}
@@ -137,7 +160,7 @@ export const CreateArticleForm = () => {
                 </FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="Numărul de telefon al bății sau al administratorului"
+                    placeholder="Numărul de telefon al vânzătorului"
                     {...field}
                   />
                 </FormControl>
@@ -161,7 +184,7 @@ export const CreateArticleForm = () => {
               </FormItem>
             )}
           />
-          {/* <LakeDescription setValue={form.setValue} /> */}
+          <ArticleDescription setValue={form.setValue} />
 
           <div className="w-full flex justify-end">
             <Button type="submit" className="mt-10" disabled={isPending}>

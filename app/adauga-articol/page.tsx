@@ -1,4 +1,3 @@
-import { CreateLakeForm } from "@/app/adauga-balta/_components/CreateLakeForm";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,7 +12,7 @@ import { CreateArticleForm } from "./_components/CreateArticleForm";
 const AdaugaArticolPage = () => {
   return (
     <div className="mt-32 container">
-      <Breadcrumb>
+      <Breadcrumb>  
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Acasă</BreadcrumbLink>
