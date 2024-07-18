@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { Button } from "./ui/button";
+import { Button, buttonVariants } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { MapPin, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
@@ -24,7 +24,6 @@ export const MarketPlace = ({ lastArticles }: { lastArticles: Article[] }) => {
                 className="max-h-[500px] max-w-[500px] object-cover rounded-l-sm brightness-75 hover:brightness-50 duration-200"
               />
 
-            
               <div className="absolute bottom-0 text-white p-2">
                 <div className="flex gap-2">
                   <Avatar>
@@ -60,10 +59,14 @@ export const MarketPlace = ({ lastArticles }: { lastArticles: Article[] }) => {
                 <p className="font-semibold align-baseline text-xs">
                   Adăgat la 15 mai 2024
                 </p>
-                <Button className="">
+
+                <Link
+                  href={`tel:${article.phoneNumber}`}
+                  className={buttonVariants()}
+                >
                   <Phone className="w-[14px] h-[14px] mr-2.5" />
                   Sună
-                </Button>
+                </Link>
               </div>
             </div>
           </div>

@@ -21,14 +21,14 @@ export const Lakes = ({
           <Link
             key={initialLake.id}
             href={`/lakes/${initialLake.lakeName}`}
-            className="relative group"
+            className="relative group h-fit"
           >
             <Image
               src={initialLake.mainImageUrl}
               width={3843}
               height={2880}
               alt="main"
-              className="object-cover max-h-screen rounded-sm brightness-75 hover:brightness-50 duration-200"
+              className="object-cover max-h-[187.33px] rounded-sm brightness-75 hover:brightness-50 duration-200"
             />
             <div className="absolute top-0 inset-x-0 flex justify-center items-center mt-2">
               <FaStar className="text-[#ffd700]" />
