@@ -15,7 +15,7 @@ export const SearchLake = () => {
     const query = debouncedValue ? { nume: debouncedValue } : {};
 
     const url = qs.stringifyUrl({
-      url: "/",
+      url: "/balti",
       query: query,
     });
 

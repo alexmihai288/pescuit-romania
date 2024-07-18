@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { MapPin, Phone } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Article } from "@prisma/client";
+import { cn } from "@/lib/utils";
 
 export const MarketPlace = ({ lastArticles }: { lastArticles: Article[] }) => {
   return (
@@ -71,8 +72,9 @@ export const MarketPlace = ({ lastArticles }: { lastArticles: Article[] }) => {
             </div>
           </div>
         ))}
-
-        <Button className="self-center">Vezi toate anunțurile</Button>
+        <Link href="/articole" className={cn(buttonVariants(), "self-center")}>
+          Vezi toate articolele
+        </Link>
       </div>
     </div>
   );

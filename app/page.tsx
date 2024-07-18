@@ -3,8 +3,10 @@ import { Hero } from "@/components/Hero";
 import { Lakes } from "@/components/Lakes";
 import { MarketPlace } from "@/components/MarketPlace";
 import { SearchLake } from "@/components/SearchLake";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { db } from "@/lib/db";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 export default async function Home({
   searchParams,
@@ -58,9 +60,16 @@ export default async function Home({
           <div className="mt-10">
             <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
           </div>
-          <Button className="mt-auto self-center" variant="superOutline">
+
+          <Link
+            href="/balti"
+            className={cn(
+              buttonVariants({ variant: "superOutline" }),
+              "mt-auto self-center"
+            )}
+          >
             Vezi toate bălțiile
-          </Button>
+          </Link>
         </div>
       </div>
 
