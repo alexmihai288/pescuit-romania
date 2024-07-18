@@ -10,47 +10,53 @@ import {
 } from "@/components/ui/breadcrumb";
 import { db } from "@/lib/db";
 import React from "react";
+import { Articles } from "./_components/Articles";
+import { SearchArticle } from "./_components/SearchArticle";
 
 const ArticolePage = async ({
   searchParams,
 }: {
-  searchParams: { nume: string };
+  searchParams: { title: string };
 }) => {
-  let lakes;
+  let articles;
 
   // Prepare filters based on searchParams
   const whereClause = {
-    lakeName: {
-      startsWith: searchParams.nume,
+    title: {
+      startsWith: searchParams.title,
       mode: "insensitive", // Make the search case-insensitive if necessary
     },
   };
 
-  lakes = await db.lake.findMany({
+  articles = await db.article.findMany({
     //@ts-ignore
     where: whereClause,
   });
 
   return (
-    <div className="container pt-40">
-      <Breadcrumb>
-        <BreadcrumbList>
-          <BreadcrumbItem>
-            <BreadcrumbLink href="/">Acasă</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
+    <div className="bg-[#047857]">
+      <div className="container pt-40">
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/" className="text-gray-200 hover:text-gray-300">Acasă</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-gray-200"/>
 
-          <BreadcrumbItem>
-            <BreadcrumbPage className="font-semibold">Articole</BreadcrumbPage>
-          </BreadcrumbItem>
-        </BreadcrumbList>
-      </Breadcrumb>
-      {/* <div className="mt-10">
-        <SearchLake pathname="" />
-      </div> */}
+            <BreadcrumbItem>
+              <BreadcrumbPage className="font-semibold text-white">
+                Articole
+              </BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+        <div className="mt-10">
+        <SearchArticle/>
+      </div>
 
-      <div className="mt-10">
-        <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
+        <div className="mt-10">
+          <Articles articles={articles} />
+        </div>
       </div>
     </div>
   );
