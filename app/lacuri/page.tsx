@@ -11,7 +11,7 @@ import {
 import { db } from "@/lib/db";
 import React from "react";
 
-const BaltiPage = async ({
+const LacuriPage = async ({
   searchParams,
 }: {
   searchParams: { nume: string };
@@ -46,7 +46,7 @@ const BaltiPage = async ({
         </BreadcrumbList>
       </Breadcrumb>
       <div className="mt-10">
-        <SearchLake />
+        <SearchLake pathname="lacuri" />
       </div>
 
       <div className="mt-10">
@@ -56,4 +56,4 @@ const BaltiPage = async ({
   );
 };
 
-export default BaltiPage;
+export default LacuriPage;

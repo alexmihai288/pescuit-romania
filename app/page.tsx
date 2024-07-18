@@ -48,7 +48,7 @@ export default async function Home({
       <div className="relative">
         <Hero />
         <div className="absolute -bottom-12 w-full flex justify-center">
-          <SearchLake />
+          <SearchLake pathname="/"/>
         </div>
       </div>
       <div className="my-32 container flex gap-10">
@@ -62,7 +62,7 @@ export default async function Home({
           </div>
 
           <Link
-            href="/balti"
+            href="/lacuri"
             className={cn(
               buttonVariants({ variant: "superOutline" }),
               "mt-auto self-center"

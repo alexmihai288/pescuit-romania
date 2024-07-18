@@ -20,7 +20,7 @@ export const Lakes = ({
         initialLakes.map((initialLake) => (
           <Link
             key={initialLake.id}
-            href={`/lakes/${initialLake.lakeName}`}
+            href={`/lacuri/${initialLake.lakeName}`}
             className="relative group h-fit"
           >
             <Image

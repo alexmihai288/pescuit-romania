@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useDebounce } from "@/hooks/useDebounce";
 import qs from "query-string";
 
-export const SearchLake = () => {
+export const SearchLake = ({ pathname }: { pathname: string }) => {
   const router = useRouter();
   const [value, setValue] = useState<string>("");
   const debouncedValue = useDebounce(value, 500);
@@ -15,12 +15,12 @@ export const SearchLake = () => {
     const query = debouncedValue ? { nume: debouncedValue } : {};
 
     const url = qs.stringifyUrl({
-      url: "/balti",
+      url: `/${pathname}`,
       query: query,
     });
 
     router.push(url, { scroll: false });
-  }, [debouncedValue, router]);
+  }, [debouncedValue, router, pathname]);
 
   return (
     <div className="bg-white h-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container pt-5">
