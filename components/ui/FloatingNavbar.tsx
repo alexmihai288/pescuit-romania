@@ -9,7 +9,7 @@ import {
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "./button";
-import { PlusCircle, Search, ShoppingBasket, Trophy } from "lucide-react";
+import { Menu, PlusCircle, Search, ShoppingBasket, Trophy } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 export const FloatingNav = ({
@@ -65,7 +65,7 @@ export const FloatingNav = ({
           // change rounded-full to rounded-lg
           // remove dark:border-white/[0.2] dark:bg-black bg-white border-transparent
           // change  pr-2 pl-8 py-2 to px-10 py-5
-          " flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-auto px-10 py-5 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-4",
+          "flex max-w-fit md:min-w-[70vw] lg:min-w-fit fixed z-[5000] top-10 inset-x-0 mx-10 md:mx-auto px-5 md:px-10 py-5 rounded-lg border border-black/.1 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] items-center justify-center space-x-12 md:space-x-4",
           className
         )}
         style={{
@@ -75,13 +75,14 @@ export const FloatingNav = ({
           border: "1px solid rgba(255, 255, 255, 0.125)",
         }}
       >
+        <Menu className="md:hidden" />
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative items-center flex space-x-1 group",
-              pathname === navItem.link && "underline underline-offset-4"
+              "relative items-center hidden md:flex space-x-1 group",
+              pathname === navItem.link && "underline underline-offset-4",
             )}
           >
             {idx === 0 && (
@@ -129,7 +130,11 @@ export const FloatingNav = ({
             </span>
           </Link>
         ))}
-        <Button variant="super" size="sm" className="uppercase text-xs">
+        <Button
+          variant="super"
+          size="sm"
+          className="hidden md:flex uppercase text-xs"
+        >
           Contact
         </Button>
         {/* remove this login btn */}

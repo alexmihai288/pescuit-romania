@@ -14,7 +14,7 @@ export const Hero = () => {
         alt="main"
         className="object-cover max-h-screen brightness-50"
       />
-      <div className="self-center absolute top-10 bg-white right-5 h-10 rounded-md flex justify-end">
+      <div className="hidden xl:flex self-center absolute top-10 bg-white right-5 h-10 rounded-md justify-end">
         <div className="flex items-center justify-center gap-2.5 py-2.5 px-5">
           <Link href="/login">
             <p className="text-sm font-bold">Intră în cont</p>

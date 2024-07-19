@@ -11,14 +11,14 @@ export const Articles = ({ articles }: { articles: Article[] }) => {
   return (
     <div className="space-y-10 pb-5">
       {articles.map((article) => (
-        <div key={article.id} className="flex">
+        <div key={article.id} className="flex flex-col md:flex-row">
           <div className="relative group">
             <Image
               src={article.images[0]}
               width={3843}
               height={2880}
               alt="main"
-              className="max-h-[500px] max-w-[500px] object-cover rounded-l-sm brightness-75 hover:brightness-50 duration-200"
+              className="md:max-h-[500px] md:max-w-[500px] w-fit object-cover md:rounded-l-sm rounded-r-sm rounded-l-sm rounded-b-none md:rounded-r-none brightness-75 hover:brightness-50 duration-200"
             />
 
             <div className="absolute bottom-0 text-white p-2">
@@ -40,7 +40,7 @@ export const Articles = ({ articles }: { articles: Article[] }) => {
               </div>
             </div>
           </div>
-          <div className="bg-white p-2.5 rounded-r-sm flex flex-col flex-1">
+          <div className="bg-white p-2.5 rounded-b-sm md:rounded-b-none md:rounded-r-sm flex flex-col flex-1">
             <div className="flex items-center justify-between">
               <h1 className="font-semibold whitespace-nowrap">
                 {article.title}
