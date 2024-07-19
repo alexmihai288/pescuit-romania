@@ -22,9 +22,11 @@ import axios from "axios";
 import { MdDescription } from "react-icons/md";
 import { useRouter } from "next/navigation";
 import { UploadArticleGallery } from "./UploadArticleGallery";
-import ArticleDescription from "./ArticleDescription";
 import { RiPriceTag3Line } from "react-icons/ri";
-
+import dynamic from "next/dynamic";
+const ArticleDescription = dynamic(() => import("./ArticleDescription"), {
+  ssr: false,
+});
 export const ArticleFormSchema = z.object({
   title: z.string().min(2, {
     message: "Titlul articolului trebuie să conțină cel putin 2 caractere.",
@@ -48,7 +50,7 @@ export const ArticleFormSchema = z.object({
       message: "Prețul trebuie să fie un număr valid",
     }),
 });
-export const CreateArticleForm = () => {
+const CreateArticleForm = () => {
   const router = useRouter();
   const { mutate: createLake, isPending } = useMutation({
     mutationFn: async (articleInfo: z.infer<typeof ArticleFormSchema>) => {
@@ -199,3 +201,5 @@ export const CreateArticleForm = () => {
     </div>
   );
 };
+
+export default CreateArticleForm;

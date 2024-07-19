@@ -7,12 +7,12 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React from "react";
-import { CreateArticleForm } from "./_components/CreateArticleForm";
+import CreateArticleForm from "./_components/CreateArticleForm";
 
 const AdaugaArticolPage = () => {
   return (
     <div className="mt-32 container">
-      <Breadcrumb>  
+      <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/">Acasă</BreadcrumbLink>

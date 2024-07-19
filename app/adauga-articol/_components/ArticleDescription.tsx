@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import React, { Component } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";

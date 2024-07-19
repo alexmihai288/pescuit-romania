@@ -1,4 +1,3 @@
-import { CreateLakeForm } from "@/app/adauga-balta/_components/CreateLakeForm";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -8,6 +7,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import React from "react";
+import { CreateLakeForm } from "./_components/CreateLakeForm";
 
 const AdaugaBaltaPage = () => {
   return (
