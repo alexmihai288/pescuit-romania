@@ -4,6 +4,7 @@ import { Lakes } from "@/components/Lakes";
 import { MarketPlace } from "@/components/MarketPlace";
 import { SearchLake } from "@/components/SearchLake";
 import { buttonVariants } from "@/components/ui/button";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -48,28 +49,29 @@ export default async function Home({
       <div className="relative">
         <Hero />
         <div className="absolute -bottom-12 w-full flex justify-center">
-          <SearchLake pathname="/"/>
+          <SearchLake pathname="/" />
         </div>
       </div>
       <div className="my-32 container flex gap-10">
         <Filters />
-        <div className="flex flex-col h-screen">
+
+        <div className="flex flex-col">
           {lakes.length > 0 && (
             <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
           )}
-          <div className="mt-10">
-            <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
+          <ScrollArea className="h-screen p-2.5">
+            <div className="mt-10">
+              <Lakes initialLakes={lakes} numeCautat={searchParams.nume} />
+            </div>
+          </ScrollArea>
+          <div className="flex justify-center">
+            <Link
+              href="/lacuri"
+              className={cn(buttonVariants({ variant: "superOutline" }))}
+            >
+              Vezi toate bălțiile
+            </Link>
           </div>
-
-          <Link
-            href="/lacuri"
-            className={cn(
-              buttonVariants({ variant: "superOutline" }),
-              "mt-auto self-center"
-            )}
-          >
-            Vezi toate bălțiile
-          </Link>
         </div>
       </div>
 
