@@ -2,11 +2,13 @@ import { Filters } from "@/components/Filters";
 import { Hero } from "@/components/Hero";
 import { Lakes } from "@/components/Lakes";
 import { MarketPlace } from "@/components/MarketPlace";
+import { MobileFilters } from "@/components/MobileFiltersModal";
 import { SearchLake } from "@/components/SearchLake";
 import { buttonVariants } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/utils";
+import { SlidersHorizontal } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home({
@@ -53,11 +55,16 @@ export default async function Home({
         </div>
       </div>
       <div className="my-32 container flex gap-10">
-        <Filters />
+        <div className="hidden sm:block">
+          <Filters />
+        </div>
 
         <div className="flex flex-col">
           {lakes.length > 0 && (
-            <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
+            <div className="flex items-center justify-between">
+              <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
+              <MobileFilters/>
+            </div>
           )}
           <ScrollArea className="h-screen p-2.5">
             <div className="mt-10">

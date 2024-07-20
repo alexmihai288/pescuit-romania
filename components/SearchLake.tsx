@@ -25,10 +25,34 @@ export const SearchLake = ({ pathname }: { pathname: string }) => {
   return (
     <div className="bg-white h-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container pt-5">
       <div className="flex items-center justify-between gap-2">
-        <Image src="/fish.svg" width={20} height={20} alt="fish" />
-        <Image src="/fish.svg" width={20} height={20} alt="fish" />
-        <Image src="/fish.svg" width={20} height={20} alt="fish" />
-        <Image src="/fish.svg" width={20} height={20} alt="fish" />
+        <Image
+          src="/fish.svg"
+          width={20}
+          height={20}
+          alt="fish"
+          className="hidden sm:block"
+        />
+        <Image
+          src="/fish.svg"
+          width={20}
+          height={20}
+          alt="fish"
+          className="hidden sm:block"
+        />
+        <Image
+          src="/fish.svg"
+          width={20}
+          height={20}
+          alt="fish"
+          className="hidden sm:block"
+        />
+        <Image
+          src="/fish.svg"
+          width={20}
+          height={20}
+          alt="fish"
+          className="hidden sm:block"
+        />
         <Image src="/fish.svg" width={20} height={20} alt="fish" />
         <PlaceholdersAndVanishInput
           placeholders={["Lake1", "Lake2"]}
@@ -40,28 +64,28 @@ export const SearchLake = ({ pathname }: { pathname: string }) => {
           width={20}
           height={20}
           alt="fish"
-          className="flip-horizontal"
+          className="flip-horizontal hidden sm:block"
         />
         <Image
           src="/fish.svg"
           width={20}
           height={20}
           alt="fish"
-          className="flip-horizontal"
+          className="flip-horizontal hidden sm:block"
         />
         <Image
           src="/fish.svg"
           width={20}
           height={20}
           alt="fish"
-          className="flip-horizontal"
+          className="flip-horizontal hidden sm:block"
         />
         <Image
           src="/fish.svg"
           width={20}
           height={20}
           alt="fish"
-          className="flip-horizontal"
+          className="flip-horizontal hidden sm:block"
         />{" "}
         <Image
           src="/fish.svg"
