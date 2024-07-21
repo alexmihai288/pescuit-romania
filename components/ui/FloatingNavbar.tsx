@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils";
 import { Button } from "./button";
 import { Menu, PlusCircle, Search, ShoppingBasket, Trophy } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { MobileMenu } from "../MobileMenu";
+import { useMobileSheetMenu } from "@/hooks/useSheet";
 
 export const FloatingNav = ({
   navItems,
@@ -47,6 +49,8 @@ export const FloatingNav = ({
     }
   });
 
+  const { isOpen } = useMobileSheetMenu();
+
   return (
     <AnimatePresence mode="wait">
       <motion.div
@@ -73,16 +77,17 @@ export const FloatingNav = ({
           backgroundColor: "white",
           borderRadius: "12px",
           border: "1px solid rgba(255, 255, 255, 0.125)",
+          zIndex: isOpen ? "1" : "100",
         }}
       >
-        <Menu className="md:hidden" />
+        <MobileMenu />
         {navItems.map((navItem: any, idx: number) => (
           <Link
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
               "relative items-center hidden md:flex space-x-1 group",
-              pathname === navItem.link && "underline underline-offset-4",
+              pathname === navItem.link && "underline underline-offset-4"
             )}
           >
             {idx === 0 && (
