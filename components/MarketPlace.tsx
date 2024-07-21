@@ -8,7 +8,7 @@ import { Articles } from "@/app/articole/_components/Articles";
 export const MarketPlace = ({ articles }: { articles: Article[] }) => {
   return (
     <div className="container">
-      <h1 className="font-bold text-5xl text-center sm:text-6xl sm:text-left md:text-7xl whitespace-nowrap text-white mb-2.5">
+      <h1 className="font-bold text-5xl text-center sm:text-6xl sm:text-left md:text-7xl whitespace-nowrap text-white my-2.5">
         Articole pescuit
       </h1>
       <div className="flex flex-col gap-10 my-20">
