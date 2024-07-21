@@ -36,7 +36,7 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
                 href="/"
                 className="text-zinc-300 hover:text-zinc-400"
               >
-                Home
+                Acasă
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />

@@ -5,7 +5,9 @@ import { MarketPlace } from "@/components/MarketPlace";
 import { MobileFilters } from "@/components/MobileFiltersModal";
 import { SearchLake } from "@/components/SearchLake";
 import { buttonVariants } from "@/components/ui/button";
+import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { testimonials } from "@/constants";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/utils";
 import { SlidersHorizontal } from "lucide-react";
@@ -39,13 +41,17 @@ export default async function Home({
     take: 9,
   });
 
-  const articles = await db.article.findMany({
+  const latestArticles = await db.article.findMany({
     orderBy: {
       createdAt: "desc",
     },
     take: 3,
   });
 
+  const randomArticles = await db.article.findMany({
+    // skip: Math.floor(Math.random() * (await db.article.count()) - 1), // Ensure this skips to a valid start point
+    take: 4,
+  });
   return (
     <main>
       <div className="relative">
@@ -63,7 +69,7 @@ export default async function Home({
           {lakes.length > 0 && (
             <div className="flex items-center justify-between">
               <h1 className="text-xl font-semibold">Cele mai bune recenzii</h1>
-              <MobileFilters/>
+              <MobileFilters />
             </div>
           )}
           <ScrollArea className="h-screen p-2.5">
@@ -82,8 +88,24 @@ export default async function Home({
         </div>
       </div>
 
-      <div className="bg-[#047857] p-2.5 my-32">
-        <MarketPlace lastArticles={articles} />
+      <div className="bg-[#047857] p-2.5">
+        <div
+          // remove bg-white dark:bg-black dark:bg-grid-white/[0.05], h-[40rem] to 30rem , md:h-[30rem] are for the responsive design
+          className="h-[50vh] md:h-[30rem] rounded-md flex flex-col antialiased  items-center justify-center relative overflow-hidden"
+        >
+          <div className="container">
+            <p className="text-xs text-white text-center sm:text-left w-full">
+              *Adăugate recent
+            </p>
+          </div>
+
+          <InfiniteMovingCards
+            items={latestArticles}
+            direction="right"
+            speed="slow"
+          />
+        </div>
+        <MarketPlace articles={randomArticles} />
       </div>
     </main>
   );

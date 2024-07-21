@@ -19,3 +19,37 @@ export const facilitiesMapping = {
   Toalete: "Toalete",
   Umbra: "Umbră",
 };
+
+
+export const testimonials = [
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lectus efficitur, lobortis dolor eu, consequat metus. Duis rutrum ligula risus, ut hendrerit ex gravida et. Maecenas ipsum mauris, semper semper eleifend sed, volutpat sed velit. Mauris condimentum sapien id tincidunt varius. Lorem ipsum dolor.",
+    name: "Michael Johnson",
+    title: "Director of AlphaStream Technologies",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lectus efficitur, lobortis dolor eu, consequat metus. Duis rutrum ligula risus, ut hendrerit ex gravida et. Maecenas ipsum mauris, semper semper eleifend sed, volutpat sed velit. Mauris condimentum sapien id tincidunt varius. Lorem ipsum dolor.",
+    name: "Michael Johnson",
+    title: "Director of AlphaStream Technologies",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lectus efficitur, lobortis dolor eu, consequat metus. Duis rutrum ligula risus, ut hendrerit ex gravida et. Maecenas ipsum mauris, semper semper eleifend sed, volutpat sed velit. Mauris condimentum sapien id tincidunt varius. Lorem ipsum dolor.",
+    name: "Michael Johnson",
+    title: "Director of AlphaStream Technologies",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lectus efficitur, lobortis dolor eu, consequat metus. Duis rutrum ligula risus, ut hendrerit ex gravida et. Maecenas ipsum mauris, semper semper eleifend sed, volutpat sed velit. Mauris condimentum sapien id tincidunt varius. Lorem ipsum dolor.",
+    name: "Michael Johnson",
+    title: "Director of AlphaStream Technologies",
+  },
+  {
+    quote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam at lectus efficitur, lobortis dolor eu, consequat metus. Duis rutrum ligula risus, ut hendrerit ex gravida et. Maecenas ipsum mauris, semper semper eleifend sed, volutpat sed velit. Mauris condimentum sapien id tincidunt varius. Lorem ipsum dolor.",
+    name: "Michael Johnson",
+    title: "Director of AlphaStream Technologies",
+  },
+];
