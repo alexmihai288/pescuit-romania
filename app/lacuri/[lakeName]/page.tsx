@@ -64,8 +64,8 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
       <div>
         <LakeHero lake={lake!} />
       </div>
-      <div className="container my-32">
-        <div className="flex justify-between bg-white rounded-md shadow-2xl">
+      <div className="container my-20 sm:my-32">
+        <div className="flex flex-col sm:flex-row sm:justify-between bg-white rounded-md shadow-2xl">
           <div className="p-2.5">
             <h1 className="font-extrabold flex items-center gap-2">
               <CgDetailsMore /> Detalii
@@ -81,7 +81,7 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
                     width={800}
                     height={800}
                     alt="gallery image"
-                    className="rounded-r-md"
+                    className="rounded-b-md sm:rounded-r-md"
                   />
                 </CarouselItem>
               ))}
@@ -101,7 +101,7 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
           Facilități
         </h1>
 
-        <div className="grid grid-cols-3 mb-32">
+        <div className="grid grid-cols-3 gap-5 items-center justify-center justify-items-start mb-20 sm:mb-32">
           {lake?.facilities.map((facility) => (
             <div
               className="flex items-center gap-2 justify-center"
