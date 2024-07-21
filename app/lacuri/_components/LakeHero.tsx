@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -25,9 +26,9 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
         width={3843}
         height={2880}
         alt="main"
-        className="object-cover max-h-[80vh] brightness-50"
+        className="object-cover max-h-screen min-h-[500px] brightness-50"
       />
-      <div className="self-center absolute top-10 left-5 h-10 rounded-md flex justify-end">
+      <div className="self-center absolute top-32 xl:top-10 left-5 h-10 rounded-md flex justify-end">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -59,27 +60,27 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
         </Breadcrumb>
       </div>
 
-      <div className="self-center absolute top-10 bg-white right-5 h-10 rounded-md flex justify-end">
+      <div className="hidden xl:flex self-center absolute top-10 bg-white right-5 h-10 rounded-md justify-end">
         <div className="flex items-center justify-center gap-2.5 py-2.5 px-5">
           <Link href="/login">
             <p className="text-sm font-bold">Intră în cont</p>
           </Link>
-          {/* <Separator orientation="vertical" className="bg-indigo-500 w-1" /> */}
+          <Separator orientation="vertical" className="bg-indigo-500 w-1" />
           <Link href="/register">
             <p className="text-sm font-bold">Creează cont</p>
           </Link>
         </div>
       </div>
-      <div className="absolute bottom-0 left-0 right-0 text-white w-full flex justify-between container">
+      <div className="absolute bottom-0 left-0 right-0 text-white w-full flex flex-col sm:flex-row sm:justify-between container">
         <div className="">
-          <div className="absolute bottom-0 text-white p-2">
+          <div className="text-white sm:p-2">
             <div className="flex gap-3">
-              <Avatar className="h-20 w-20">
+              <Avatar className="h-16 w-16 sm:h-20 sm:w-20">
                 <AvatarImage src={lake.logoUrl} />
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <p className="font-bold text-4xl">{lake.lakeName}</p>
+                <p className="font-bold text-xl sm:text-2xl md:text-4xl">{lake.lakeName}</p>
                 <Link
                   href={`tel:${lake.phoneNumber}`}
                   className="flex items-center gap-2 text-lg"

@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/carousel";
 import Image from "next/image";
 import { MdOutlineStorage } from "react-icons/md";
-import { LuTreePine } from "react-icons/lu";
 import { AiOutlineCar } from "react-icons/ai";
 import {
   FaHome,
