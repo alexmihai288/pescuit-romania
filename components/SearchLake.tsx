@@ -23,7 +23,7 @@ export const SearchLake = ({ pathname }: { pathname: string }) => {
   }, [debouncedValue, router, pathname]);
 
   return (
-    <div className="bg-white h-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container pt-5">
+    <div className="bg-white h-20 shadow-indigo-500/90 shadow-sm rounded-md w-full max-w-5xl container pt-5" id="cauta">
       <div className="flex items-center justify-between gap-2">
         <Image
           src="/fish.svg"

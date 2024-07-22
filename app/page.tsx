@@ -4,6 +4,7 @@ import { Lakes } from "@/components/Lakes";
 import { MarketPlace } from "@/components/MarketPlace";
 import { MobileFilters } from "@/components/MobileFiltersModal";
 import { SearchLake } from "@/components/SearchLake";
+import { TopLocations } from "@/components/TopLocations";
 import { buttonVariants } from "@/components/ui/button";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -107,6 +108,7 @@ export default async function Home({
         </div>
         <MarketPlace articles={randomArticles} />
       </div>
+      <TopLocations topLakes={lakes} />
     </main>
   );
 }
