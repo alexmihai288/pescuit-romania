@@ -13,6 +13,7 @@ import { Menu, PlusCircle, Search, ShoppingBasket, Trophy } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { MobileMenu } from "../MobileMenu";
 import { useMobileSheetMenu } from "@/hooks/useSheet";
+import { useSignModal } from "@/hooks/useSignModal";
 
 export const FloatingNav = ({
   navItems,
@@ -49,7 +50,8 @@ export const FloatingNav = ({
     }
   });
 
-  const { isOpen } = useMobileSheetMenu();
+  const { isOpen: isMobileSheetOpen } = useMobileSheetMenu();
+  const { isOpen: isSignModalOpen } = useSignModal();
 
   return (
     <AnimatePresence mode="wait">
@@ -77,7 +79,7 @@ export const FloatingNav = ({
           backgroundColor: "white",
           borderRadius: "12px",
           border: "1px solid rgba(255, 255, 255, 0.125)",
-          zIndex: isOpen ? "1" : "100",
+          zIndex: isMobileSheetOpen || isSignModalOpen ? "1" : "100",
         }}
       >
         <MobileMenu />

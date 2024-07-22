@@ -6,6 +6,7 @@ import { navItems } from "@/constants";
 import { Toaster } from "@/components/ui/toaster";
 import { QueryProvider } from "@/components/providers/QueryProvider";
 import { Footer } from "@/components/Footer";
+import { ModalProvider } from "@/components/ui/animated-modal";
 
 const font = Nunito({ subsets: ["latin"] });
 
@@ -25,7 +26,7 @@ export default function RootLayout({
         <QueryProvider>
           <FloatingNav navItems={navItems} />
           <Toaster />
-          {children}
+          <ModalProvider>{children}</ModalProvider>
           <Footer />
         </QueryProvider>
       </body>

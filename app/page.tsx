@@ -8,10 +8,8 @@ import { TopLocations } from "@/components/TopLocations";
 import { buttonVariants } from "@/components/ui/button";
 import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { testimonials } from "@/constants";
 import { db } from "@/lib/db";
 import { cn } from "@/lib/utils";
-import { SlidersHorizontal } from "lucide-react";
 import Link from "next/link";
 
 export default async function Home({
