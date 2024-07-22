@@ -53,9 +53,11 @@ const facilitiesMapping: FacilitiesMapping = {
 };
 
 const LakePage = async ({ params }: { params: { lakeName: string } }) => {
+  const decodedLakeName = decodeURIComponent(params.lakeName);
+
   const lake = await db.lake.findFirst({
     where: {
-      lakeName: params.lakeName,
+      lakeName: decodedLakeName,
     },
   });
 
@@ -119,7 +121,6 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
         </div>
       </div>
 
-      
       <div className="container">
         <div>pai naa</div>
       </div>
