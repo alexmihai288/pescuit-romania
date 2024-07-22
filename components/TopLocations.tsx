@@ -2,7 +2,6 @@ import { Lake } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { FaRegStarHalfStroke, FaStar } from "react-icons/fa6";
 import { Button, buttonVariants } from "./ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { MapPin, Phone } from "lucide-react";
@@ -10,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 export const TopLocations = ({ topLakes }: { topLakes: Lake[] }) => {
   return (
-    <div className="container my-32">
+    <div className="container my-32" id="top-locatii">
       <h1 className="font-bold text-5xl text-center sm:text-6xl sm:text-left md:text-7xl whitespace-nowrap my-2.5">
         Top locații
       </h1>
