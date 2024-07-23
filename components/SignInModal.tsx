@@ -5,17 +5,17 @@ import {
   ModalProvider,
   ModalTrigger,
 } from "./ui/animated-modal";
-import { SignUpForm } from "./SignUpForm";
+import { SignInForm } from "./SignInForm";
 
-export const SignUpModal = () => {
+export const SignInModal = () => {
   return (
     <ModalProvider>
       <Modal>
         <ModalTrigger className="p-0">
-          <p className="text-sm font-bold">Creează cont</p>
+          <p className="text-sm font-bold">Intră în cont</p>
         </ModalTrigger>
         <ModalBody className="p-5">
-          <SignUpForm />
+          <SignInForm />
         </ModalBody>
       </Modal>
     </ModalProvider>

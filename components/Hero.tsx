@@ -4,6 +4,7 @@ import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
 import { SignUpModal } from "./SignUpModal";
+import { SignInModal } from "./SignInModal";
 
 export const Hero = () => {
   return (
@@ -17,9 +18,7 @@ export const Hero = () => {
       />
       <div className="hidden xl:flex self-center absolute top-10 bg-white right-5 h-10 rounded-md justify-end">
         <div className="flex items-center justify-center gap-2.5 py-2.5 px-5">
-          <Link href="/register">
-            <p className="text-sm font-bold">Intră în cont</p>
-          </Link>
+          <SignInModal />
           <Separator orientation="vertical" className="bg-indigo-500 w-1" />
           <SignUpModal />
         </div>
