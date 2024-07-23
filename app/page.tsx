@@ -17,8 +17,6 @@ export default async function Home({
 }: {
   searchParams: { nume: string; facilitati: string };
 }) {
-  let lakes;
-
   // Prepare filters based on searchParams
   const whereClause = {
     lakeName: {
@@ -34,7 +32,7 @@ export default async function Home({
     };
   }
 
-  lakes = await db.lake.findMany({
+  const lakes = await db.lake.findMany({
     //@ts-ignore
     where: whereClause,
     take: 9,
@@ -50,6 +48,13 @@ export default async function Home({
   const randomArticles = await db.article.findMany({
     // skip: Math.floor(Math.random() * (await db.article.count()) - 1), // Ensure this skips to a valid start point
     take: 4,
+  });
+
+  const topLakes = await db.lake.findMany({
+    orderBy: {
+      votes: "desc",
+    },
+    take: 3,
   });
   return (
     <main>
@@ -106,7 +111,7 @@ export default async function Home({
         </div>
         <MarketPlace articles={randomArticles} />
       </div>
-      <TopLocations topLakes={lakes} />
+      <TopLocations topLakes={topLakes} />
     </main>
   );
 }

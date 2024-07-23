@@ -17,6 +17,7 @@ import {
 import Link from "next/link";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { VoteLake } from "./VoteLake";
 
 export const LakeHero = ({ lake }: { lake: Lake }) => {
   return (
@@ -80,7 +81,9 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
                 <AvatarFallback>CN</AvatarFallback>
               </Avatar>
               <div className="flex flex-col">
-                <p className="font-bold text-xl sm:text-2xl md:text-4xl">{lake.lakeName}</p>
+                <p className="font-bold text-xl sm:text-2xl md:text-4xl">
+                  {lake.lakeName}
+                </p>
                 <Link
                   href={`tel:${lake.phoneNumber}`}
                   className="flex items-center gap-2 text-lg"
@@ -97,23 +100,26 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
           </div>
         </div>
 
-        <div className="p-2 flex gap-2">
-          <div className="">
-            <p>Recenzii</p>
-            <div className="flex items-center">
-              <FaStar className="text-[#ffd700]" />
-              <FaStar className="text-[#ffd700]" />
-              <FaStar className="text-[#ffd700]" />
-              <FaStar className="text-[#ffd700]" />
-              <FaRegStarHalfStroke className="text-[#ffd700]" />
+        <div className="p-2 flex flex-col gap-2">
+          <div className="flex gap-2">
+            <div className="">
+              <p>Recenzii</p>
+              <div className="flex items-center">
+                <FaStar className="text-[#ffd700]" />
+                <FaStar className="text-[#ffd700]" />
+                <FaStar className="text-[#ffd700]" />
+                <FaStar className="text-[#ffd700]" />
+                <FaRegStarHalfStroke className="text-[#ffd700]" />
+              </div>
             </div>
+            <Link
+              href={`mailto:${lake.email}`}
+              className={buttonVariants({ variant: "secondary" })}
+            >
+              Trimite email
+            </Link>
           </div>
-          <Link
-            href={`mailto:${lake.email}`}
-            className={buttonVariants({ variant: "secondary" })}
-          >
-            Trimite email
-          </Link>
+          <VoteLake lakeId={lake.id} />
         </div>
       </div>
     </div>

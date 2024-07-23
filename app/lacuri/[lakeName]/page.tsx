@@ -63,9 +63,7 @@ const LakePage = async ({ params }: { params: { lakeName: string } }) => {
 
   return (
     <main className="bg-[#f3f4f6]">
-      <div>
         <LakeHero lake={lake!} />
-      </div>
       <div className="container my-20 sm:my-32">
         <div className="flex flex-col sm:flex-row sm:justify-between bg-white rounded-md shadow-2xl">
           <div className="p-2.5">
