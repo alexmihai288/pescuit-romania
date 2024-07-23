@@ -5,6 +5,7 @@ import {
   Sheet,
   SheetContent,
   SheetDescription,
+  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -15,6 +16,9 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { navItems } from "@/constants";
 import { usePathname } from "next/navigation";
+import { SignInModal } from "./SignInModal";
+import { Separator } from "./ui/separator";
+import { SignUpModal } from "./SignUpModal";
 
 export const MobileMenu = () => {
   const { isOpen, onOpen, onClose } = useMobileSheetMenu();
@@ -32,18 +36,18 @@ export const MobileMenu = () => {
             <Menu />
           </button>
         </SheetTrigger>
-        <SheetContent side="left">
+        <SheetContent side="left" className="flex flex-col">
           <SheetHeader className="mb-10">
             <SheetTitle>Meniu</SheetTitle>
           </SheetHeader>
-
           {navItems.map((navItem: any, idx: number) => (
             <Link
               key={`link=${idx}`}
               href={navItem.link}
               className={cn(
                 "relative items-center flex space-x-1 group mb-10",
-                pathname === navItem.link && "underline underline-offset-4 bg-[#f3f3f4] p-2.5 rounded-md w-fit"
+                pathname === navItem.link &&
+                  "underline underline-offset-4 bg-[#f3f3f4] p-2.5 rounded-md w-fit"
               )}
             >
               {idx === 0 && (
@@ -91,13 +95,15 @@ export const MobileMenu = () => {
               </span>
             </Link>
           ))}
-          <Button
-            variant="super"
-            size="sm"
-            className="hidden md:flex uppercase text-xs"
-          >
+          <Button variant="super" size="sm" className="uppercase text-xs">
             Contact
           </Button>
+  
+            <div className="flex items-center justify-center gap-2.5 py-2.5 px-5 mt-auto">
+              <SignInModal />
+              <Separator orientation="vertical" className="bg-indigo-500 w-2" />
+              <SignUpModal />
+            </div>
         </SheetContent>
       </Sheet>
     </>
