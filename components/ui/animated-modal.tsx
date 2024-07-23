@@ -1,4 +1,5 @@
 "use client";
+import { useMobileSheetMenu } from "@/hooks/useSheet";
 import { useSignModal } from "@/hooks/useSignModal";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
@@ -49,6 +50,7 @@ export const ModalTrigger = ({
 }) => {
   const { setOpen } = useModal();
   const { onOpen } = useSignModal();
+  const { onClose } = useMobileSheetMenu();
   return (
     <button
       className={cn(

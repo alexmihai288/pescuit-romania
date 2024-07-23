@@ -43,7 +43,7 @@ export const LakeHero = ({ lake }: { lake: Lake }) => {
 
             <BreadcrumbItem>
               <BreadcrumbLink
-                href="/"
+                href="/lacuri"
                 className="text-zinc-300 hover:text-zinc-400"
               >
                 Lacuri
