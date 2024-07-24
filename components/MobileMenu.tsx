@@ -4,8 +4,6 @@ import React from "react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -49,6 +47,7 @@ export const MobileMenu = () => {
                 pathname === navItem.link &&
                   "underline underline-offset-4 bg-[#f3f3f4] p-2.5 rounded-md w-fit"
               )}
+              onClick={() => onClose()}
             >
               {idx === 0 && (
                 <PlusCircle
@@ -98,12 +97,12 @@ export const MobileMenu = () => {
           <Button variant="super" size="sm" className="uppercase text-xs">
             Contact
           </Button>
-  
-            <div className="flex items-center justify-center gap-2.5 py-2.5 px-5 mt-auto">
-              <SignInModal />
-              <Separator orientation="vertical" className="bg-indigo-500 w-2" />
-              <SignUpModal />
-            </div>
+
+          <div className="flex items-center justify-center gap-2.5 py-2.5 px-5 mt-auto">
+            <SignInModal />
+            <Separator orientation="vertical" className="bg-indigo-500 w-2" />
+            <SignUpModal />
+          </div>
         </SheetContent>
       </Sheet>
     </>
